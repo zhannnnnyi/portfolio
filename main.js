@@ -42,7 +42,8 @@
   const clickableSelector = `
     a, button, .btn, [role='button'],
     input[type='submit'], input[type='button'],
-    select, textarea, .form-control
+    select, textarea, .form-control, .snippet-img,
+    .skills-trigger-software, .skills-trigger-skills
   `;
 
   document.addEventListener("mouseover", (e)=>{
@@ -218,7 +219,30 @@ const WORKS = [
       "assets/works/bmf-digital/2.png",
       "assets/works/bmf-digital/3.png"
     ]
-  }
+  },
+  {
+    id: "bmf-website",
+    title: "BMF: Website Design",
+    year: "2024",
+    teaser: "Transforming BMF’s CSR campaigns into a clean, timeline-based web experience.",
+    overview: [
+      "The CSR Webpage Design involved designing a dedicated website landing page to highlight BMF’s CSR initiatives, keeping everything aligned with the existing website guidelines. My final goal was to present the campaigns (across the years) clearly and cohesively without overwhelming the viewer.",
+      "With that, I proposed a scrolling timeline to organise initiatives by progression, creating a more interactive browsing experience. In addition, I was required to coordinate closely with an external web vendor to ensure the site was accurately translated from design to code. In the end, the outcome was a clean, structured webpage that communicated BMF’s CSR efforts in an accessible and engaging way, which strengthend my understanding of interaction design and cross-functional collaboration."
+    ],
+    heroImage: "assets/works/bmf-website/thumbnail.png",
+    snippets: [
+      "assets/works/bmf-website/1.png",
+      "assets/works/bmf-website/2.png",
+      "assets/works/bmf-website/3.png"
+    ],
+    thumbnail: "assets/works/bmf-website/thumbnail.png",
+    featured: true,
+    featuredSub: "2024 • UI/UX",
+    featuredImages: [
+      "assets/works/bmf-website/1.png",
+      "assets/works/bmf-website/2.png",
+    ]
+  },   
 ];
 
 function getWorkById(id){
@@ -238,7 +262,7 @@ function renderWorksList(){
   const mount = document.getElementById("worksList");
   if(!mount) return;
 
-  // TBWA-style vertical list (image + meta)
+  // Vertical list (image + meta)
   mount.innerHTML = WORKS.map(w => `
     <article class="work-row">
       <a class="work-row__link" href="project.html?id=${encodeURIComponent(w.id)}" aria-label="${escapeHtml(w.title)}">
@@ -363,7 +387,25 @@ if (gal) {
            loading="lazy">
     </figure>
   `).join("");
+
+  initSnippetLightbox();
 }
+}
+
+function initSnippetLightbox(){
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  document.querySelectorAll(".snippet-img").forEach(img=>{
+    img.addEventListener("click", ()=>{
+      lightboxImg.src = img.src;
+      lightbox.classList.add("active");
+    });
+  });
+
+  lightbox.addEventListener("click", ()=>{
+    lightbox.classList.remove("active");
+  });
 }
 
 function renderFeaturedGrid(){
@@ -374,19 +416,23 @@ function renderFeaturedGrid(){
 
   mount.innerHTML = featured.map(w => {
     const imgs = (w.featuredImages && w.featuredImages.length)
-      ? w.featuredImages
+      ? w.featuredImages.slice(0, 3).filter(Boolean)
       : [w.thumbnail || w.heroImage].filter(Boolean);
 
     const sub = w.featuredSub || (w.year ? `${w.year}` : "");
+    const cycleClass = imgs.length > 1 ? "project-image-cycle" : "";
 
     return `
-      <div class="col-md-6 col-lg-4">
+      <div class="featured-slide">
         <a class="work-tile" href="project.html?id=${encodeURIComponent(w.id)}" aria-label="${escapeHtml(w.title)}">
-          <div class="work-media project-image-cycle">
+          <div class="work-media ${cycleClass}" data-img-count="${imgs.length}">
             ${imgs.map((src, i) => `
-              <img src="${escapeHtml(src)}" alt="${escapeHtml(w.title)} — image ${i+1}" loading="lazy">
+              <img
+                src="${escapeHtml(src)}"
+                alt="${escapeHtml(w.title)} — image ${i + 1}"
+                loading="lazy"
+              >
             `).join("")}
-
             <div class="work-overlay">
               <span class="work-sub">${escapeHtml(sub)}</span>
             </div>
@@ -399,6 +445,164 @@ function renderFeaturedGrid(){
       </div>
     `;
   }).join("");
+
+  initFeaturedSlider();
+}
+
+function initFeaturedCrossfades(){
+  document.querySelectorAll(".project-image-cycle").forEach(cycle => {
+    const imgs = Array.from(cycle.querySelectorAll("img"));
+    if (imgs.length <= 1) return;
+
+    if (cycle.dataset.crossfadeInit === "1") return;
+    cycle.dataset.crossfadeInit = "1";
+
+    let index = 0;
+
+    imgs.forEach((img, i) => {
+      img.classList.toggle("is-active", i === 0);
+    });
+
+    const interval = 2400; // time each image stays before next fade
+
+    setInterval(() => {
+      imgs[index].classList.remove("is-active");
+      index = (index + 1) % imgs.length;
+      imgs[index].classList.add("is-active");
+    }, interval);
+  });
+}
+
+function initFeaturedSlider(){
+  const track = document.getElementById("featuredGrid");
+  const viewport = track ? track.parentElement : null;
+  const dotsMount = document.getElementById("featuredDots");
+
+  if (!track || !viewport || !dotsMount) return;
+
+  const originalSlides = Array.from(track.querySelectorAll(".featured-slide"));
+  if (!originalSlides.length) return;
+
+  function getVisibleCount(){
+    if (window.innerWidth < 768) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+
+  function buildDots(count){
+    dotsMount.innerHTML = Array.from({ length: count }, (_, i) => `
+      <button
+        class="featured-slider__dot"
+        type="button"
+        aria-label="Go to work ${i + 1}"
+        data-index="${i}">
+      </button>
+    `).join("");
+  }
+
+  function setActiveDot(index){
+    const dots = Array.from(dotsMount.querySelectorAll(".featured-slider__dot"));
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === index);
+    });
+  }
+
+  function mountScrollLoop(){
+    const visible = getVisibleCount();
+    const cloneCount = Math.min(visible, originalSlides.length);
+
+    const before = originalSlides.slice(-cloneCount).map(s => s.cloneNode(true));
+    const main = originalSlides.map(s => s.cloneNode(true));
+    const after = originalSlides.slice(0, cloneCount).map(s => s.cloneNode(true));
+
+    track.innerHTML = "";
+    [...before, ...main, ...after].forEach(slide => track.appendChild(slide));
+
+    const slides = Array.from(track.querySelectorAll(".featured-slide"));
+    buildDots(originalSlides.length);
+
+    let isJumping = false;
+    let scrollTimer = null;
+
+    function getStep(){
+      const gap = parseFloat(getComputedStyle(track).gap) || 24;
+      return slides[0].getBoundingClientRect().width + gap;
+    }
+
+    function getRealIndex(){
+      const step = getStep();
+      const rawIndex = Math.round(viewport.scrollLeft / step);
+      let realIndex = (rawIndex - cloneCount) % originalSlides.length;
+      if (realIndex < 0) realIndex += originalSlides.length;
+      return realIndex;
+    }
+
+    function updateDots(){
+      setActiveDot(getRealIndex());
+    }
+
+    function jumpIfNeeded(){
+      if (isJumping) return;
+
+      const step = getStep();
+      const rawIndex = Math.round(viewport.scrollLeft / step);
+      const total = originalSlides.length;
+
+      if (rawIndex < cloneCount) {
+        isJumping = true;
+        viewport.scrollLeft = (rawIndex + total) * step;
+        isJumping = false;
+      } else if (rawIndex >= total + cloneCount) {
+        isJumping = true;
+        viewport.scrollLeft = (rawIndex - total) * step;
+        isJumping = false;
+      }
+
+      updateDots();
+    }
+
+    viewport.scrollLeft = cloneCount * getStep();
+    updateDots();
+
+    viewport.onscroll = () => {
+      if (isJumping) return;
+
+      updateDots();
+
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        jumpIfNeeded();
+      }, 80);
+    };
+
+    dotsMount.onclick = (e) => {
+      const dot = e.target.closest(".featured-slider__dot");
+      if (!dot) return;
+
+      const realIndex = Number(dot.dataset.index);
+      const step = getStep();
+      const targetIndex = cloneCount + realIndex;
+
+      viewport.scrollTo({
+        left: targetIndex * step,
+        behavior: "smooth"
+      });
+    };
+  }
+
+  function remount(){
+    track.innerHTML = originalSlides.map(s => s.outerHTML).join("");
+    mountScrollLoop();
+    initFeaturedCrossfades();
+  }
+
+  remount();
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(remount, 120);
+  }, { passive: true });
 }
 
 window.addEventListener("DOMContentLoaded", () => {

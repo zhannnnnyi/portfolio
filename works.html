@@ -22,31 +22,45 @@
       <ul class="navbar-nav ms-auto gap-lg-2">
         <li class="nav-item"><a class="nav-link" href="works.html">Works</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="case-study.html">Case Study</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<header class="section">
+<header class="section no-reveal">
   <div class="container container-nice">
-    <h1 class="big-title mb-2">WORKS</h1>
-    <p class="text-muted-custom mb-0">A selection of projects across visual communication, digital media, and experimental work.</p>
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <h1 class="big-title mb-2">WORKS</h1>
+        <p class="text-muted-custom mb-0">A selection of projects across visual communication, digital media, and experimental work.</p>
+      </div>
+
+      <div class="col-lg-6">
+        <video class="work-hero-video" autoplay muted loop playsinline>
+          <source src="assets/work-hero.webm" type="video/webm">
+        </video>
+      </div>
+    </div>
   </div>
-</header>
+</header> 
 
-
-<main class="section pt-5 section--paper">
+<main class="section section--paper no-reveal">
   <div class="container container-nice">
     <div id="worksList" class="works-list"></div>
   </div>
 </main>
 
-
 <footer>
-  <div class="container container-nice d-flex justify-content-between flex-wrap gap-2">
+  <div class="container container-nice d-flex justify-content-between flex-wrap gap-2 align-items-center">
     <div>© <span id="year"></span> ZY</div>
-    <div><a href="index.html">Home</a></div>
+
+    <div class="footer-socials">
+      <a href="https://instagram.com/zhannieinks" target="_blank" rel="noopener">Instagram</a>
+      <span>•</span>
+      <a href="https://www.linkedin.com/in/leezhanyi" target="_blank" rel="noopener">LinkedIn</a>
+      <span>•</span>
+      <a href="mailto:leezhanyi16@gmail.com">Email</a>
+    </div>
   </div>
 </footer>
 
