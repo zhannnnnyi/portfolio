@@ -323,7 +323,6 @@ a:hover{ color: var(--brand); }
   object-fit: contain;   
   z-index: 1;
   pointer-events: none;
-  mix-blend-mode: screen;
 }
 
 @media (max-width: 991px){
