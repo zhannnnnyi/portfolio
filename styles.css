@@ -21,8 +21,8 @@
   --shadow: none;
 
   /* Fonts */
-  --font-title: "PP Neue Machina", "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --font-body: 'peridot-pe-variable', sans-serif;
+  --font-title: "PP Neue Machina", "locator-web", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-body: 'peridot-pe-variable', 'Open Sans', sans-serif;
 }
 
 /* =========================
