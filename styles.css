@@ -1,3 +1,11 @@
+  @font-face{
+  font-family: "PP Neue Machina";
+  src: url("assets/PPNeueMachina-Ultrabold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root{
   /* =========================================
      Color Scheme
