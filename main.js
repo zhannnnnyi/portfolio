@@ -346,9 +346,9 @@ const WORKS = [
     snippets: [
       "assets/works/outreach/flyer.png",
       "assets/works/outreach/poster.png",
-      "assets/works/outreach/1.jpg",
-      "assets/works/outreach/2.jpg",
-      "assets/works/outreach/3.jpg",
+      "assets/works/outreach/1.JPG",
+      "assets/works/outreach/2.JPG",
+      "assets/works/outreach/3.JPG",
     ],
     thumbnail: "assets/works/outreach/flyer.png",
     featured: true,
