@@ -62,21 +62,6 @@
   });
 })();
 
-
-/* =========================================================
-   Flatpickr + Interview Date
-   ========================================================= */
-(function initInterviewDateMin(){
-  const dateInput = document.querySelector("#interviewDate");
-  if(!dateInput) return;
-
-  const now = new Date();
-  const yyyy = now.getFullYear();
-  const mm = String(now.getMonth() + 1).padStart(2, "0");
-  const dd = String(now.getDate()).padStart(2, "0");
-  dateInput.min = `${yyyy}-${mm}-${dd}`;
-})();
-
 window.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".section");
   if (!sections.length) return;
@@ -105,39 +90,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach(section => observer.observe(section));
 });
-
-window.addEventListener("DOMContentLoaded", () => {
-  if (typeof flatpickr === "undefined") {
-    console.error("Flatpickr not loaded. Check script order.");
-    return;
-  }
-
-  flatpickr("#interviewDate", {
-    minDate: "today",
-    dateFormat: "d/m/Y",
-    disableMobile: true,
-    altInput: false
-  });
-});
-
-(function initTimeSlots(){
-  const select = document.querySelector("#timeSlot");
-  if(!select) return;
-  select.innerHTML = TIME_SLOTS.map(s => `<option value="${s}">${s}</option>`).join("");
-})();
-
-(function contactFormDemo(){
-  const form = document.querySelector("#contactForm");
-  const status = document.querySelector("#formStatus");
-  if(!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    status.textContent = "Sent! Looking forward to our interview!";
-    status.classList.remove("d-none");
-    form.reset();
-  });
-})();
 
 /* =========================================================
    Works
@@ -344,7 +296,7 @@ const WORKS = [
     ],
     heroImage: "assets/works/outreach/flyer.png",
     snippets: [
-      "assets/works/outreach/flyer.png",
+      "assets/works/outreach/flyer.png", 
       "assets/works/outreach/poster.png",
       "assets/works/outreach/1.JPG",
       "assets/works/outreach/2.JPG",
