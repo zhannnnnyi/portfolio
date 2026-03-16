@@ -101,10 +101,10 @@ const WORKS = [
     year: "2026",
     teaser: "Application of design thinking in creating a user-centered, responsive website through iterative research, ideation, and prototyping.",
     overview: [
-      "<b> This Website Project </b> blended design thinking with usability heuristics to craft a clean and  intuitive digital portfolio. The goal was to create an experience that feels seamless, engaging, and easy to navigate while being usable.</strong>",
-      "Inspired by the bold yet minimalist designs of TBWA and DiffDiv, I incorporated their structures with my established brand identity.  Large (and captivating) visuals with tactiful white space reduced clutter, letting the content speak for itself.",
-      "Flexibility was a consideration, allowing users to either navigate through the Works tab and scroll to specific projects or, for quicker access, use the featured scroll on the homepage to directly reach the desired work. This dual approach caters to both new and returning users, ensuring a smooth and efficient browsing experience for all.",
-      "Error handling was crucial (especially the form), ensuring that  users would receive clear, actionable feedback through immediate visual cues. By integrating insights from industry-leading examples, I was able to design an experience that works as seamlessly as it looks."
+      "<b> This Website Project </b> blended design thinking with usability heuristics to craft a clean and  intuitive digital portfolio. The goal was to create an experience that feels seamless, engaging, and easy to navigate while being usable.",
+      "Inspired by the bold yet restrained digital presence of other creative studios, the site adopts a minimalist structure with my personal branding. This approach reduces visual noise and allows each project to take centre stage.",
+      "The navigation system was designed with flexibility in mind. Visitors can explore projects through the Works page for a comprehensive overview, or quickly access selected pieces through the featured scrolling section on the homepage. This dual structure supports both exploratory browsing and direct navigation.",
+      "Built using HTML, CSS, and JavaScript, the site incorporates dynamic project pages, responsive layouts, and interactive image cycling to create a smooth and adaptable experience across devices. This project became both a showcase for my work and a testing ground for refining my approach to digital design, balancing visual clarity with functional interaction.",
     ],
     heroImage: "assets/works/website/thumbnail.png",
     heroVimeoId: "1172167340",
