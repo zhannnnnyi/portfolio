@@ -660,6 +660,39 @@ a:hover{ color: var(--brand); }
 }
 
 /* =========================
+   Lightbox
+   ========================= */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+
+.lightbox.active{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#lightbox-img{
+  max-width: min(92vw, 1400px);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* =========================
    Snippets grid (for project page)
    ========================= */
 .snippets-grid{
