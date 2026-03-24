@@ -106,23 +106,23 @@ const WORKS = [
       "The navigation system was designed with flexibility in mind. Visitors can explore projects through the Works page for a comprehensive overview, or quickly access selected pieces through the featured scrolling section on the homepage. This dual structure supports both exploratory browsing and direct navigation.",
       "Built using HTML, CSS, and JavaScript, the site incorporates dynamic project pages, responsive layouts, and interactive image cycling to create a smooth and adaptable experience across devices. This project became both a showcase for my work and a testing ground for refining my approach to digital design, balancing visual clarity with functional interaction.",
     ],
-    heroImage: "assets/works/website/thumbnail.png",
+    heroImage: "assets/works/website/thumbnail.webp",
     heroVimeoId: "1172167340",
     snippets: [
-      "assets/works/website/thumbnail.png",
-      "assets/works/website/thumbnail-2.png",
-      "assets/works/website/branding.jpg",
-      "assets/works/website/home.jpg",
-      "assets/works/website/works.jpg",
-      "assets/works/website/about.jpg",
+      "assets/works/website/thumbnail.webp",
+      "assets/works/website/thumbnail-2.webp",
+      "assets/works/website/branding.webp",
+      "assets/works/website/home.webp",
+      "assets/works/website/works.webp",
+      "assets/works/website/about.webp",
     ],
-    thumbnail: "assets/works/website/thumbnail.png",
+    thumbnail: "assets/works/website/thumbnail.webp",
 
     featured: true,
     featuredSub: "2026 • Website",
     featuredImages: [
-      "assets/works/website/thumbnail.png",
-      "assets/works/website/thumbnail-2.png"
+      "assets/works/website/thumbnail.webp",
+      "assets/works/website/thumbnail-2.webp"
     ]
   },
   {
@@ -136,20 +136,20 @@ const WORKS = [
     ],
     heroVimeoId: "1169617733",
     snippets: [
-      "assets/works/rsd-film/01.jpg",
-      "assets/works/rsd-film/02.png",
-      "assets/works/rsd-film/03.png",
-      "assets/works/rsd-film/04.png",
-      "assets/works/rsd-film/05.png"
+      "assets/works/rsd-film/01.webp",
+      "assets/works/rsd-film/02.webp",
+      "assets/works/rsd-film/03.webp",
+      "assets/works/rsd-film/04.webp",
+      "assets/works/rsd-film/05.webp"
     ],
-    thumbnail: "assets/works/rsd-film/hero.jpg",
+    thumbnail: "assets/works/rsd-film/hero.webp",
 
     featured: true,
     featuredSub: "2025 • Film",
     featuredImages: [
-      "assets/works/rsd-film/hero.jpg",
-      "assets/works/rsd-film/05.png",
-      "assets/works/rsd-film/04.png"
+      "assets/works/rsd-film/hero.webp",
+      "assets/works/rsd-film/05.webp",
+      "assets/works/rsd-film/04.webp"
     ],
     externalLink: "https://tinyurl.com/RSD-Film"
   },
@@ -163,21 +163,21 @@ const WORKS = [
       "Through exploration of print techniques, paper choices, cutting, and hand-stitching, I developed a clearer understanding of how design decisions translate into physical artefacts. A highlight of this journey would be the film roll–inspired zine composed of repurposed film canisters, using a filmstrip format to present photos shot on film, connecting content, form, and medium.",
       "This ongoing pet project serves as a playground for experimentation and personal expression, helping me refine my design instincts while exploring the tactile nature of print."
     ],
-    heroImage: "assets/works/zines/hero.png",
+    heroImage: "assets/works/zines/hero.webp",
     snippets: [
-      "assets/works/zines/5.png",
-      "assets/works/zines/1.png",
-      "assets/works/zines/3.png",
-      "assets/works/zines/2.png",
-      "assets/works/zines/4.png"
+      "assets/works/zines/5.webp",
+      "assets/works/zines/1.webp",
+      "assets/works/zines/3.webp",
+      "assets/works/zines/2.webp",
+      "assets/works/zines/4.webp"
     ],
-    thumbnail: "assets/works/zines/1.png",
+    thumbnail: "assets/works/zines/1.webp",
     featured: true,
     featuredSub: "2023 - Present • Print",
     featuredImages: [
-      "assets/works/zines/1.png",
-      "assets/works/zines/2.png",
-      "assets/works/zines/3.png"
+      "assets/works/zines/1.webp",
+      "assets/works/zines/2.webp",
+      "assets/works/zines/3.webp"
     ]
   },
   {
@@ -190,19 +190,19 @@ const WORKS = [
       "Reinterpretating the generative AI “blister pack” trend through manual design proved to be more effective for greater control over composition and visual quality. This resulted in a more tailored, human-led outcome that was well received by both my team and the audience.",
       "Designing digital banners for BMF Indonesia challenged my cross-cultural thinking to adapt visuals for a foreign audience, while maintaining the visual consistency and brand identity across regions.",
     ],
-    heroImage: "assets/works/bmf-digital/thumbnail.png",
+    heroImage: "assets/works/bmf-digital/thumbnail.webp",
     snippets: [
-      "assets/works/bmf-digital/acne.png",
-      "assets/works/bmf-digital/indo.png",
-      "assets/works/bmf-digital/banners.png"
+      "assets/works/bmf-digital/acne.webp",
+      "assets/works/bmf-digital/indo.webp",
+      "assets/works/bmf-digital/banners.webp"
     ],
-    thumbnail: "assets/works/bmf-digital/thumbnail.png",
+    thumbnail: "assets/works/bmf-digital/thumbnail.webp",
     featured: true,
     featuredSub: "2024 - 2025 • Social Media",
     featuredImages: [
-      "assets/works/bmf-digital/1.png",
-      "assets/works/bmf-digital/2.png",
-      "assets/works/bmf-digital/3.png"
+      "assets/works/bmf-digital/1.webp",
+      "assets/works/bmf-digital/2.webp",
+      "assets/works/bmf-digital/3.webp"
     ]
   },
   {
@@ -214,18 +214,18 @@ const WORKS = [
       "<b> The CSR Webpage Design </b> involved designing a dedicated website landing page to highlight BMF’s CSR initiatives, keeping everything aligned with the existing website guidelines. My final goal was to present the campaigns (across the years) clearly and cohesively without overwhelming the viewer.",
       "With that, I proposed a scrolling timeline to organise initiatives by progression, creating a more interactive browsing experience. In addition, I was required to coordinate closely with an external web vendor to ensure the site was accurately translated from design to code. In the end, the outcome was a clean, structured webpage that communicated BMF’s CSR efforts in an accessible and engaging way, which strengthend my understanding of interaction design and cross-functional collaboration."
     ],
-    heroImage: "assets/works/bmf-website/thumbnail.png",
+    heroImage: "assets/works/bmf-website/thumbnail.webp",
     snippets: [
-      "assets/works/bmf-website/1.png",
-      "assets/works/bmf-website/2.png",
-      "assets/works/bmf-website/3.png"
+      "assets/works/bmf-website/1.webp",
+      "assets/works/bmf-website/2.webp",
+      "assets/works/bmf-website/3.webp"
     ],
-    thumbnail: "assets/works/bmf-website/thumbnail.png",
+    thumbnail: "assets/works/bmf-website/thumbnail.webp",
     featured: true,
     featuredSub: "2024 • UI/UX",
     featuredImages: [
-      "assets/works/bmf-website/1.png",
-      "assets/works/bmf-website/2.png",
+      "assets/works/bmf-website/1.webp",
+      "assets/works/bmf-website/2.webp",
     ]
   },   
   {
@@ -239,25 +239,25 @@ const WORKS = [
       "One standout project was the Food Drive campaign, a collaboration with Food from the Heart and Samaritans of Singapore. Initially starting as a playful, hand-drawn concept, the design evolved through multiple iterations to combine BMF and Svenson’s color palettes with photo-realistic imagery. The final poster, printed for nationwide dissemination, played a key role in raising over $50,000 for the partner organisations, marking a significant milestone in my growth as a designer.",
       "Additionally, I worked on the Clinic Posters project, a revamp of posters for BMF Clinic’s new centre. Using a minimalist palette of white and grey, I focused on restrained typography and grid systems to convey professionalism and clarity. This project deepened my understanding of how layout, typography, and visual consistency contribute to trust and credibility in the healthcare context."
     ],
-    heroImage: "assets/works/bmf-print/1.png",
+    heroImage: "assets/works/bmf-print/1.webp",
     heroVimeoId: "1172449312",
     snippets: [
-      "assets/works/bmf-print/clinic.png",
-      "assets/works/bmf-print/clinic-mock-1.png",
-      "assets/works/bmf-print/clinic-mock-2.png", 
-      "assets/works/bmf-print/1.png",
-      "assets/works/bmf-print/2.png",
-      "assets/works/bmf-print/3.png",
-      "assets/works/bmf-print/poster-1.png",
-      "assets/works/bmf-print/poster-2.png",
+      "assets/works/bmf-print/clinic.webp",
+      "assets/works/bmf-print/clinic-mock-1.webp",
+      "assets/works/bmf-print/clinic-mock-2.webp", 
+      "assets/works/bmf-print/1.webp",
+      "assets/works/bmf-print/2.webp",
+      "assets/works/bmf-print/3.webp",
+      "assets/works/bmf-print/poster-1.webp",
+      "assets/works/bmf-print/poster-2.webp",
     ],
-    thumbnail: "assets/works/bmf-print/1.png",
+    thumbnail: "assets/works/bmf-print/1.webp",
     featured: true,
     featuredSub: "2024 - 2025 • Print",
     featuredImages: [
-      "assets/works/bmf-print/1.png",
-      "assets/works/bmf-print/2.png",
-      "assets/works/bmf-print/3.png",
+      "assets/works/bmf-print/1.webp",
+      "assets/works/bmf-print/2.webp",
+      "assets/works/bmf-print/3.webp",
     ]
   },   
   {
@@ -269,19 +269,19 @@ const WORKS = [
       "<b> The Photobook </b> was a group project exploring perceptions of death in Singapore, presented as an e-book combining imagery and interview responses from eight participants of different ages, backgrounds, and beliefs. Structured by age, the chapters offer a lifespan-based perspective on how individuals encounter and interpret death.",
       "As the main designer, I defined the visual direction of the book, balancing the somber subject matter with an uplifting, destigmatizing tone. With limited experience and tools as a Year 1 student, I relied on experimentation and group feedback to refine typography, layout, and pacing, ensuring the design remained sensitive and considered. The final outcome was a thoughtfully composed photobook that captured the realities of its participants. The emotional depth and scale of the project expanded my confidence as a designer and remains one of the most meaningful works I have produced."
     ],
-    heroImage: "assets/works/photobook/1.png",
+    heroImage: "assets/works/photobook/1.webp",
     snippets: [
-      "assets/works/photobook/1.png",
-      "assets/works/photobook/2.png",
-      "assets/works/photobook/3.png"
+      "assets/works/photobook/1.webp",
+      "assets/works/photobook/2.webp",
+      "assets/works/photobook/3.webp"
     ],
-    thumbnail: "assets/works/photobook/1.png",
+    thumbnail: "assets/works/photobook/1.webp",
     featured: true,
     featuredSub: "2024 • Editorial",
     featuredImages: [
-      "assets/works/photobook/1.png",
-      "assets/works/photobook/2.png",
-      "assets/works/photobook/3.png",
+      "assets/works/photobook/1.webp",
+      "assets/works/photobook/2.webp",
+      "assets/works/photobook/3.webp",
     ],
     externalLink: "https://tinyurl.com/NCO-Photobook"
   },
@@ -294,20 +294,20 @@ const WORKS = [
       "<b> The Community Outreach </b> project focused on promoting active ageing in Singapore through an “Amazing Race” designed for seniors in the Yuhua community.",
       "As part of the publicity team, I served as the designer responsible for the promotional poster and the final academic poster summarising our 12-week process and outcomes. Designing for an elderly audience required a strong focus on accessibility, including larger type, higher contrast, simplified layouts, and a bilingual English–Chinese version. Considering digital literacy, printed posters were prioritized, supported by a targeted WhatsApp broadcast for effective outreach. The publicity materials successfully attracted the target 50 senior participants, meeting the event quota and earning strong appreciation from our community partner. This project deepened my ability to design with empathy and adapt visual communication to real-world community needs."
     ],
-    heroImage: "assets/works/outreach/flyer.png",
+    heroImage: "assets/works/outreach/flyer.webp",
     snippets: [
-      "assets/works/outreach/flyer.png", 
-      "assets/works/outreach/poster.png",
-      "assets/works/outreach/1.JPG",
-      "assets/works/outreach/2.JPG",
-      "assets/works/outreach/3.JPG",
+      "assets/works/outreach/flyer.webp", 
+      "assets/works/outreach/poster.webp",
+      "assets/works/outreach/1.webp",
+      "assets/works/outreach/2.webp",
+      "assets/works/outreach/3.webp",
     ],
-    thumbnail: "assets/works/outreach/flyer.png",
+    thumbnail: "assets/works/outreach/flyer.webp",
     featured: true,
     featuredSub: "2024 • Print",
     featuredImages: [
-      "assets/works/outreach/flyer.png",
-      "assets/works/outreach/poster.png",
+      "assets/works/outreach/flyer.webp",
+      "assets/works/outreach/poster.webp",
     ]
   },   
 ];
