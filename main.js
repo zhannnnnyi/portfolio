@@ -240,7 +240,7 @@ const WORKS = [
       "Additionally, I worked on the Clinic Posters project, a revamp of posters for BMF Clinic’s new centre. Using a minimalist palette of white and grey, I focused on restrained typography and grid systems to convey professionalism and clarity. This project deepened my understanding of how layout, typography, and visual consistency contribute to trust and credibility in the healthcare context."
     ],
     heroImage: "assets/works/bmf-print/1.webp",
-    heroVimeoId: "1172449312",
+    heroVimeoId: "1187178681",
     snippets: [
       "assets/works/bmf-print/clinic.webp",
       "assets/works/bmf-print/clinic-mock-1.webp",
