@@ -134,7 +134,7 @@ const WORKS = [
       "<b> The RSD Film </b> is a short social media video driven by my interest in vinyl collecting, created to promote Record Store Day 2025. The video brings viewers through the vinyl ritual, from digging in-store to playing the record, which aimed to reignite interest in physical media.</strong>",
       "Produced solely by myself, the project relied on  self-sourced equipment and the support of a local record store (@wowfactorrecords). This limitation forced me to focus on visual storytelling and typography to convey mood, pacing, and intention. The final video was well received by my lecturer and strengthened my skill as a visual storyteller."
     ],
-    heroVimeoId: "1169617733",
+    heroImage: "assets/works/rsd-film/hero.webp",
     snippets: [
       "assets/works/rsd-film/01.webp",
       "assets/works/rsd-film/02.webp",
