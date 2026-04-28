@@ -107,7 +107,7 @@ const WORKS = [
       "Built using HTML, CSS, and JavaScript, the site incorporates dynamic project pages, responsive layouts, and interactive image cycling to create a smooth and adaptable experience across devices. This project became both a showcase for my work and a testing ground for refining my approach to digital design, balancing visual clarity with functional interaction.",
     ],
     heroImage: "assets/works/website/thumbnail.webp",
-    heroVimeoId: "1172167340",
+    heroVimeoId: "1187181196",
     snippets: [
       "assets/works/website/thumbnail.webp",
       "assets/works/website/thumbnail-2.webp",
