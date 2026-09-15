@@ -1,5 +1,7 @@
 /* =========================================================
-   Custom Cursor
+   15 sept
+
+    Custom Cursor 
    ========================================================= */
 (() => {
   const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
