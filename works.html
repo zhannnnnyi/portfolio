@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav class="navbar navbar-expand-lg fixed-top">
   <div class="container container-nice">
     <a class="navbar-brand fw-semibold" href="index.html" style="font-family:var(--font-title);">ZY</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
@@ -44,6 +44,13 @@
   </div>
 </header> 
 
+
+<div class="works-tabs-bar">
+  <div class="container container-nice">
+    <div id="worksTabs" class="works-tabs d-none" aria-label="Jump to company"></div>
+  </div>
+</div>
+
 <main class="section section--paper no-reveal">
   <div class="container container-nice">
     <div id="worksList" class="works-list"></div>
@@ -53,7 +60,6 @@
 <footer>
   <div class="container container-nice d-flex justify-content-between flex-wrap gap-2 align-items-center">
     <div>© <span id="year"></span> ZY</div>
-
     <div class="footer-socials">
       <a href="https://instagram.com/zhannieinks" target="_blank" rel="noopener">Instagram</a>
       <span>•</span>

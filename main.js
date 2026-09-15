@@ -1,3 +1,6 @@
+/* =========================================================
+   Custom Cursor
+   ========================================================= */
 (() => {
   const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (!canHover) return;
@@ -16,11 +19,11 @@
   let ty = dy;
 
   function animate(){
-    // White dot = fast follow
+    // White dot
     dx += (tx - dx) * 0.35;
     dy += (ty - dy) * 0.35;
 
-    // Pink ring = slower follow
+    // Pink ring
     rx += (tx - rx) * 0.12;
     ry += (ty - ry) * 0.12;
 
@@ -43,7 +46,7 @@
     a, button, .btn, [role='button'],
     input[type='submit'], input[type='button'],
     select, textarea, .form-control, .snippet-img,
-    .skills-trigger-software, .skills-trigger-skills
+    .skills-trigger-software, .skills-trigger-skills, .skills-trigger-education
   `;
 
   document.addEventListener("mouseover", (e)=>{
@@ -57,18 +60,6 @@
       ring.classList.remove("is-link");
     }
   });
-})();
-
-(function initInterviewDateMin(){
-  const dateInput = document.querySelector("#interviewDate");
-  if(!dateInput) return;
-
-  // Set minimum date to today (local)
-  const now = new Date();
-  const yyyy = now.getFullYear();
-  const mm = String(now.getMonth() + 1).padStart(2, "0");
-  const dd = String(now.getDate()).padStart(2, "0");
-  dateInput.min = `${yyyy}-${mm}-${dd}`;
 })();
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -87,7 +78,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
         } else {
-          entry.target.classList.remove("is-visible"); // 👈 re-hide on exit
+          entry.target.classList.remove("is-visible"); 
         }
       });
     },
@@ -100,149 +91,269 @@ window.addEventListener("DOMContentLoaded", () => {
   sections.forEach(section => observer.observe(section));
 });
 
-window.addEventListener("DOMContentLoaded", () => {
-  if (typeof flatpickr === "undefined") {
-    console.error("Flatpickr not loaded. Check script order.");
-    return;
-  }
-
-  flatpickr("#interviewDate", {
-    minDate: "today",
-    dateFormat: "d/m/Y",
-    disableMobile: true,
-    altInput: false
-  });
-});
-
-(function initTimeSlots(){
-  const select = document.querySelector("#timeSlot");
-  if(!select) return;
-  select.innerHTML = TIME_SLOTS.map(s => `<option value="${s}">${s}</option>`).join("");
-})();
-
-(function contactFormDemo(){
-  const form = document.querySelector("#contactForm");
-  const status = document.querySelector("#formStatus");
-  if(!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    status.textContent = "Sent! Looking forward to our interview!";
-    status.classList.remove("d-none");
-    form.reset();
-  });
-})();
-
 /* =========================================================
-   REVAMP: Works (Option A) — data + render helpers
-   - works.html: renders TBWA-style previews
-   - project.html: single template page driven by ?id=
+   Works
+   ========================================================= =
+   Add a `company` field to any work to group it under that
+   company's heading on the Works page (e.g. company: "BMF").
+   Works are grouped in the order companies first appear in
+   this array. Any work WITHOUT a `company` field is placed
+   under the fallback group name set in FALLBACK_GROUP below.
    ========================================================= */
+const FALLBACK_GROUP = "Personal Projects";
 
 const WORKS = [
+  {
+    id: "AEB",
+    title: "Apple English Breakfast",
+    year: "2026",
+    company: "CHAGEE",
+    teaser: "Promoted active ageing in Singapore through a senior-focused \"Amazing Race\" in Yuhua.",
+    overview: [
+      "<b> The Community Outreach </b> project focused on promoting active ageing in Singapore through an “Amazing Race” designed for seniors in the Yuhua community.",
+      "As part of the publicity team, I served as the designer responsible for the promotional poster and the final academic poster summarising our 12-week process and outcomes. Designing for an elderly audience required a strong focus on accessibility, including larger type, higher contrast, simplified layouts, and a bilingual English–Chinese version. Considering digital literacy, printed posters were prioritized, supported by a targeted WhatsApp broadcast for effective outreach. The publicity materials successfully attracted the target 50 senior participants, meeting the event quota and earning strong appreciation from our community partner. This project deepened my ability to design with empathy and adapt visual communication to real-world community needs."
+    ],
+    heroImage: "assets/works/outreach/flyer.webp",
+    snippets: [
+      "assets/works/outreach/flyer.webp", 
+      "assets/works/outreach/poster.webp",
+      "assets/works/outreach/1.webp",
+      "assets/works/outreach/2.webp",
+      "assets/works/outreach/3.webp",
+    ],
+    thumbnail: "assets/works/outreach/flyer.webp",
+    featured: true,
+    featuredSub: "2024 • Print",
+    featuredImages: [
+      "assets/works/outreach/flyer.webp",
+      "assets/works/outreach/poster.webp",
+    ]
+  },  
+
+  {
+    id: "website",
+    title: "Digital Portfolio",
+    year: "2026",
+    company: "", // e.g. "BMF" — leave blank to fall under "Personal Projects"
+    teaser: "Application of design thinking in creating a user-centered, responsive website through iterative research, ideation, and prototyping.",
+    overview: [
+      "<b> This Website Project </b> blended design thinking with usability heuristics to craft a clean and  intuitive digital portfolio. The goal was to create an experience that feels seamless, engaging, and easy to navigate while being usable.",
+      "Inspired by the bold yet restrained digital presence of other creative studios, the site adopts a minimalist structure with my personal branding. This approach reduces visual noise and allows each project to take centre stage.",
+      "The navigation system was designed with flexibility in mind. Visitors can explore projects through the Works page for a comprehensive overview, or quickly access selected pieces through the featured scrolling section on the homepage. This dual structure supports both exploratory browsing and direct navigation.",
+      "Built using HTML, CSS, and JavaScript, the site incorporates dynamic project pages, responsive layouts, and interactive image cycling to create a smooth and adaptable experience across devices. This project became both a showcase for my work and a testing ground for refining my approach to digital design, balancing visual clarity with functional interaction.",
+    ],
+    heroImage: "assets/works/website/thumbnail.webp",
+    heroVimeoId: "1172167340",
+    snippets: [
+      "assets/works/website/thumbnail.webp",
+      "assets/works/website/thumbnail-2.webp",
+      "assets/works/website/branding.webp",
+      "assets/works/website/home.webp",
+      "assets/works/website/works.webp",
+      "assets/works/website/about.webp",
+    ],
+    thumbnail: "assets/works/website/thumbnail.webp",
+
+    featured: true,
+    featuredSub: "2026 • Website",
+    featuredImages: [
+      "assets/works/website/thumbnail.webp",
+      "assets/works/website/thumbnail-2.webp"
+    ]
+  },
   {
     id: "rsd-film",
     title: "RSD Film",
     year: "2025",
+    company: "",
     teaser: "A short film exploring the journey of vinyl collecting.",
     overview: [
-      "The RSD Film is a short social media video driven by my interest in vinyl collecting, created to promote Record Store Day 2025. The video brings viewers through the vinyl ritual, from digging in-store to playing the record, which aimed to reignite interest in physical media.",
+      "<b> The RSD Film </b> is a short social media video driven by my interest in vinyl collecting, created to promote Record Store Day 2025. The video brings viewers through the vinyl ritual, from digging in-store to playing the record, which aimed to reignite interest in physical media.</strong>",
       "Produced solely by myself, the project relied on  self-sourced equipment and the support of a local record store (@wowfactorrecords). This limitation forced me to focus on visual storytelling and typography to convey mood, pacing, and intention. The final video was well received by my lecturer and strengthened my skill as a visual storyteller."
     ],
-    heroImage: "assets/works/rsd-film/hero.jpg",
     heroVimeoId: "1169617733",
     snippets: [
-      "assets/works/rsd-film/01.jpg",
-      "assets/works/rsd-film/02.png",
-      "assets/works/rsd-film/03.png",
-      "assets/works/rsd-film/04.png",
-      "assets/works/rsd-film/05.png"
+      "assets/works/rsd-film/01.webp",
+      "assets/works/rsd-film/02.webp",
+      "assets/works/rsd-film/03.webp",
+      "assets/works/rsd-film/04.webp",
+      "assets/works/rsd-film/05.webp"
     ],
-    thumbnail: "assets/works/rsd-film/hero.jpg",
+    thumbnail: "assets/works/rsd-film/hero.webp",
 
     featured: true,
     featuredSub: "2025 • Film",
     featuredImages: [
-      "assets/works/rsd-film/hero.jpg",
-      "assets/works/rsd-film/05.png",
-      "assets/works/rsd-film/04.png"
-    ]
+      "assets/works/rsd-film/hero.webp",
+      "assets/works/rsd-film/05.webp",
+      "assets/works/rsd-film/04.webp"
+    ],
+    externalLink: "https://tinyurl.com/RSD-Film"
   },
   {
     id: "zines",
     title: "Zines",
     year: "2023 - Present",
+    company: "",
     teaser: "An evolving series of tactile zines that transforms personal travels and interests into experimental print artefacts.",
     overview: [
-      "This personal project is a Series of Zines to document and showcase my interests and travels. Each zine explores a different theme (or country), allowing me to experiment freely with palettes, formats, and dimensions, with the main goal to challenge myself to keep each work fresh and visually distinct.",
+      "This personal project is a <b> Series of Zine </b> to document and showcase my interests and travels. Each zine explores a different theme (or country), allowing me to experiment freely with palettes, formats, and dimensions, with the main goal to challenge myself to keep each work fresh and visually distinct.",
       "Through exploration of print techniques, paper choices, cutting, and hand-stitching, I developed a clearer understanding of how design decisions translate into physical artefacts. A highlight of this journey would be the film roll–inspired zine composed of repurposed film canisters, using a filmstrip format to present photos shot on film, connecting content, form, and medium.",
       "This ongoing pet project serves as a playground for experimentation and personal expression, helping me refine my design instincts while exploring the tactile nature of print."
     ],
-    heroImage: "assets/works/zines/hero.png",
+    heroImage: "assets/works/zines/hero.webp",
     snippets: [
-      "assets/works/zines/5.png",
-      "assets/works/zines/1.png",
-      "assets/works/zines/3.png",
-      "assets/works/zines/2.png",
-      "assets/works/zines/4.png"
+      "assets/works/zines/5.webp",
+      "assets/works/zines/1.webp",
+      "assets/works/zines/3.webp",
+      "assets/works/zines/2.webp",
+      "assets/works/zines/4.webp"
     ],
-    thumbnail: "assets/works/zines/1.png",
+    thumbnail: "assets/works/zines/1.webp",
     featured: true,
     featuredSub: "2023 - Present • Print",
     featuredImages: [
-      "assets/works/zines/1.png",
-      "assets/works/zines/2.png",
-      "assets/works/zines/3.png"
+      "assets/works/zines/1.webp",
+      "assets/works/zines/2.webp",
+      "assets/works/zines/3.webp"
     ]
   },
   {
     id: "bmf-digital",
     title: "BMF: Social Media",
     year: "2024 - 2025",
+    company: "BMF",
     teaser: "A collection of campaign-driven social media designs that deliver visually impactful work across diverse audiences.",
     overview: [
-      "This body of work includes Social Media Posts & Banners created across multiple campaigns and time periods. Working within established brand guidelines, the focus was on balancing clarity and visual impact while designing efficiently within tight timelines.",
+      "This body of work includes <b> Social Media Posts & Banners </b> created across multiple campaigns and time periods. Working within established brand guidelines, the focus was on balancing clarity and visual impact while designing efficiently within tight timelines.",
       "Reinterpretating the generative AI “blister pack” trend through manual design proved to be more effective for greater control over composition and visual quality. This resulted in a more tailored, human-led outcome that was well received by both my team and the audience.",
       "Designing digital banners for BMF Indonesia challenged my cross-cultural thinking to adapt visuals for a foreign audience, while maintaining the visual consistency and brand identity across regions.",
     ],
-    heroImage: "assets/works/bmf-digital/thumbnail.png",
+    heroImage: "assets/works/bmf-digital/thumbnail.webp",
     snippets: [
-      "assets/works/bmf-digital/acne.png",
-      "assets/works/bmf-digital/indo.png",
-      "assets/works/bmf-digital/banners.png"
+      "assets/works/bmf-digital/acne.webp",
+      "assets/works/bmf-digital/indo.webp",
+      "assets/works/bmf-digital/banners.webp"
     ],
-    thumbnail: "assets/works/bmf-digital/thumbnail.png",
+    thumbnail: "assets/works/bmf-digital/thumbnail.webp",
     featured: true,
     featuredSub: "2024 - 2025 • Social Media",
     featuredImages: [
-      "assets/works/bmf-digital/1.png",
-      "assets/works/bmf-digital/2.png",
-      "assets/works/bmf-digital/3.png"
+      "assets/works/bmf-digital/1.webp",
+      "assets/works/bmf-digital/2.webp",
+      "assets/works/bmf-digital/3.webp"
     ]
   },
   {
     id: "bmf-website",
     title: "BMF: Website Design",
     year: "2024",
+    company: "BMF",
     teaser: "Transforming BMF’s CSR campaigns into a clean, timeline-based web experience.",
     overview: [
-      "The CSR Webpage Design involved designing a dedicated website landing page to highlight BMF’s CSR initiatives, keeping everything aligned with the existing website guidelines. My final goal was to present the campaigns (across the years) clearly and cohesively without overwhelming the viewer.",
+      "<b> The CSR Webpage Design </b> involved designing a dedicated website landing page to highlight BMF’s CSR initiatives, keeping everything aligned with the existing website guidelines. My final goal was to present the campaigns (across the years) clearly and cohesively without overwhelming the viewer.",
       "With that, I proposed a scrolling timeline to organise initiatives by progression, creating a more interactive browsing experience. In addition, I was required to coordinate closely with an external web vendor to ensure the site was accurately translated from design to code. In the end, the outcome was a clean, structured webpage that communicated BMF’s CSR efforts in an accessible and engaging way, which strengthend my understanding of interaction design and cross-functional collaboration."
     ],
-    heroImage: "assets/works/bmf-website/thumbnail.png",
+    heroImage: "assets/works/bmf-website/thumbnail.webp",
     snippets: [
-      "assets/works/bmf-website/1.png",
-      "assets/works/bmf-website/2.png",
-      "assets/works/bmf-website/3.png"
+      "assets/works/bmf-website/1.webp",
+      "assets/works/bmf-website/2.webp",
+      "assets/works/bmf-website/3.webp"
     ],
-    thumbnail: "assets/works/bmf-website/thumbnail.png",
+    thumbnail: "assets/works/bmf-website/thumbnail.webp",
     featured: true,
     featuredSub: "2024 • UI/UX",
     featuredImages: [
-      "assets/works/bmf-website/1.png",
-      "assets/works/bmf-website/2.png",
+      "assets/works/bmf-website/1.webp",
+      "assets/works/bmf-website/2.webp",
     ]
   },   
+  {
+    id: "bmf-print",
+    title: "BMF: Print Design",
+    year: "2024",
+    company: "BMF",
+    teaser: "Creating impactful print materials that communicate BMF’s message effectively.",
+    overview: [
+      "This series of <b> Print Media Assets </b>, created during my internship, includes posters and brochures designed to support various communication needs.",
+      "A key project was a brochure for Temasek Holdings, which highlighted BMF’s offerings and corporate profile. Balancing content with a professional tone, while considering layout, hierarchy, and typography, was essential. The design direction for this brochure was later referenced and adapted by the team for subsequent projects, contributing to stronger visual consistency.",
+      "One standout project was the Food Drive campaign, a collaboration with Food from the Heart and Samaritans of Singapore. Initially starting as a playful, hand-drawn concept, the design evolved through multiple iterations to combine BMF and Svenson’s color palettes with photo-realistic imagery. The final poster, printed for nationwide dissemination, played a key role in raising over $50,000 for the partner organisations, marking a significant milestone in my growth as a designer.",
+      "Additionally, I worked on the Clinic Posters project, a revamp of posters for BMF Clinic’s new centre. Using a minimalist palette of white and grey, I focused on restrained typography and grid systems to convey professionalism and clarity. This project deepened my understanding of how layout, typography, and visual consistency contribute to trust and credibility in the healthcare context."
+    ],
+    heroImage: "assets/works/bmf-print/1.webp",
+    heroVimeoId: "1172449312",
+    snippets: [
+      "assets/works/bmf-print/clinic.webp",
+      "assets/works/bmf-print/clinic-mock-1.webp",
+      "assets/works/bmf-print/clinic-mock-2.webp", 
+      "assets/works/bmf-print/1.webp",
+      "assets/works/bmf-print/2.webp",
+      "assets/works/bmf-print/3.webp",
+      "assets/works/bmf-print/poster-1.webp",
+      "assets/works/bmf-print/poster-2.webp",
+    ],
+    thumbnail: "assets/works/bmf-print/1.webp",
+    featured: true,
+    featuredSub: "2024 - 2025 • Print",
+    featuredImages: [
+      "assets/works/bmf-print/1.webp",
+      "assets/works/bmf-print/2.webp",
+      "assets/works/bmf-print/3.webp",
+    ]
+  },   
+  {
+    id: "photobook",
+    title: "Photobook",
+    year: "2024",
+    company: "",
+    teaser: "A thoughtful e-book exploring diverse perceptions of death in Singapore, reflecting on personal and cultural perspectives.",
+    overview: [
+      "<b> The Photobook </b> was a group project exploring perceptions of death in Singapore, presented as an e-book combining imagery and interview responses from eight participants of different ages, backgrounds, and beliefs. Structured by age, the chapters offer a lifespan-based perspective on how individuals encounter and interpret death.",
+      "As the main designer, I defined the visual direction of the book, balancing the somber subject matter with an uplifting, destigmatizing tone. With limited experience and tools as a Year 1 student, I relied on experimentation and group feedback to refine typography, layout, and pacing, ensuring the design remained sensitive and considered. The final outcome was a thoughtfully composed photobook that captured the realities of its participants. The emotional depth and scale of the project expanded my confidence as a designer and remains one of the most meaningful works I have produced."
+    ],
+    heroImage: "assets/works/photobook/1.webp",
+    snippets: [
+      "assets/works/photobook/1.webp",
+      "assets/works/photobook/2.webp",
+      "assets/works/photobook/3.webp"
+    ],
+    thumbnail: "assets/works/photobook/1.webp",
+    featured: true,
+    featuredSub: "2024 • Editorial",
+    featuredImages: [
+      "assets/works/photobook/1.webp",
+      "assets/works/photobook/2.webp",
+      "assets/works/photobook/3.webp",
+    ],
+    externalLink: "https://tinyurl.com/NCO-Photobook"
+  },
+  {
+    id: "outreach",
+    title: "Community Outreach",
+    year: "2024",
+    company: "",
+    teaser: "Promoted active ageing in Singapore through a senior-focused \"Amazing Race\" in Yuhua.",
+    overview: [
+      "<b> The Community Outreach </b> project focused on promoting active ageing in Singapore through an “Amazing Race” designed for seniors in the Yuhua community.",
+      "As part of the publicity team, I served as the designer responsible for the promotional poster and the final academic poster summarising our 12-week process and outcomes. Designing for an elderly audience required a strong focus on accessibility, including larger type, higher contrast, simplified layouts, and a bilingual English–Chinese version. Considering digital literacy, printed posters were prioritized, supported by a targeted WhatsApp broadcast for effective outreach. The publicity materials successfully attracted the target 50 senior participants, meeting the event quota and earning strong appreciation from our community partner. This project deepened my ability to design with empathy and adapt visual communication to real-world community needs."
+    ],
+    heroImage: "assets/works/outreach/flyer.webp",
+    snippets: [
+      "assets/works/outreach/flyer.webp", 
+      "assets/works/outreach/poster.webp",
+      "assets/works/outreach/1.webp",
+      "assets/works/outreach/2.webp",
+      "assets/works/outreach/3.webp",
+    ],
+    thumbnail: "assets/works/outreach/flyer.webp",
+    featured: true,
+    featuredSub: "2024 • Print",
+    featuredImages: [
+      "assets/works/outreach/flyer.webp",
+      "assets/works/outreach/poster.webp",
+    ]
+  },  
+  
 ];
 
 function getWorkById(id){
@@ -258,12 +369,36 @@ function escapeHtml(str){
     .replaceAll("'","&#039;");
 }
 
-function renderWorksList(){
-  const mount = document.getElementById("worksList");
-  if(!mount) return;
+function slugify(str){
+  return String(str)
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "") || "group";
+}
 
-  // Vertical list (image + meta)
-  mount.innerHTML = WORKS.map(w => `
+// Group works by `company`, preserving the order companies first appear in WORKS.
+function groupWorksByCompany(){
+  const groups = new Map();
+
+  WORKS.forEach(w => {
+    const key = (w.company && w.company.trim()) ? w.company.trim() : FALLBACK_GROUP;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(w);
+  });
+
+  // Push the fallback group to the end, regardless of where it first appeared.
+  if (groups.has(FALLBACK_GROUP)) {
+    const fallbackWorks = groups.get(FALLBACK_GROUP);
+    groups.delete(FALLBACK_GROUP);
+    groups.set(FALLBACK_GROUP, fallbackWorks);
+  }
+
+  return groups;
+}
+
+function workRowHTML(w){
+  return `
     <article class="work-row">
       <a class="work-row__link" href="project.html?id=${encodeURIComponent(w.id)}" aria-label="${escapeHtml(w.title)}">
         <div class="work-row__thumb">
@@ -272,12 +407,146 @@ function renderWorksList(){
 
         <div class="work-row__meta">
           <div class="work-row__kicker">${escapeHtml(w.year)}</div>
-          <h2 class="work-row__title">${escapeHtml(w.title)}</h2>
+          <h3 class="work-row__title">${escapeHtml(w.title)}</h3>
           <p class="work-row__teaser">${escapeHtml(w.teaser)}</p>
         </div>
       </a>
     </article>
+  `;
+}
+
+function renderWorksList(){
+  const mount = document.getElementById("worksList");
+  if(!mount) return;
+
+  const tabsMount = document.getElementById("worksTabs");
+  const groups = groupWorksByCompany();
+  const groupNames = Array.from(groups.keys());
+
+  // Tabs (only worth showing if there's more than one group)
+  if (tabsMount) {
+    if (groupNames.length > 1) {
+      tabsMount.classList.remove("d-none");
+      tabsMount.innerHTML = groupNames.map(name => `
+        <button class="works-tab" type="button" data-target="group-${slugify(name)}">
+          ${escapeHtml(name)}
+        </button>
+      `).join("");
+    } else {
+      tabsMount.classList.add("d-none");
+      tabsMount.innerHTML = "";
+    }
+  }
+
+  // Grouped sections
+  mount.innerHTML = groupNames.map(name => `
+    <section class="works-group" id="group-${slugify(name)}">
+      <h2 class="works-group__title">${escapeHtml(name)}</h2>
+      <div class="works-group__list">
+        ${groups.get(name).map(workRowHTML).join("")}
+      </div>
+    </section>
   `).join("");
+
+  initWorksTabs();
+  initWorksTabsPin();
+}
+
+function initWorksTabs(){
+  const tabsMount = document.getElementById("worksTabs");
+  if (!tabsMount) return;
+
+  const tabs = Array.from(tabsMount.querySelectorAll(".works-tab"));
+  if (!tabs.length) return;
+
+  const sections = tabs
+    .map(t => document.getElementById(t.dataset.target))
+    .filter(Boolean);
+
+  // Height of the fixed navbar + sticky tab bar, used to offset scroll targets.
+  function getScrollOffset(){
+    return tabsMount.getBoundingClientRect().bottom + 16;
+  }
+
+  tabsMount.onclick = (e) => {
+    const btn = e.target.closest(".works-tab");
+    if (!btn) return;
+
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+
+    const top = target.getBoundingClientRect().top + window.scrollY - getScrollOffset();
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const idx = sections.indexOf(entry.target);
+      if (idx === -1) return;
+      tabs.forEach((t, i) => t.classList.toggle("is-active", i === idx));
+    });
+  }, {
+    rootMargin: "-35% 0px -55% 0px",
+    threshold: 0
+  });
+
+  sections.forEach(s => observer.observe(s));
+}
+
+// Pins the works tab bar to the viewport (below the navbar) once the page
+// scrolls past it, and unpins it when scrolling back up. Checks the bar's
+// LIVE position on every scroll rather than a position cached at load time,
+// so it stays correct even if web fonts loading in later reflow the header
+// above it.
+function initWorksTabsPin(){
+  const bar = document.querySelector(".works-tabs-bar");
+  const navbar = document.querySelector(".navbar");
+  if (!bar || !navbar) return;
+
+  let spacer = document.querySelector(".works-tabs-bar-spacer");
+  if (!spacer) {
+    spacer = document.createElement("div");
+    spacer.className = "works-tabs-bar-spacer";
+    bar.after(spacer);
+  }
+
+  function pin(navHeight){
+    spacer.style.height = `${bar.offsetHeight}px`;
+    bar.classList.add("is-pinned");
+    bar.style.top = `${navHeight}px`;
+  }
+
+  function unpin(){
+    bar.classList.remove("is-pinned");
+    bar.style.top = "";
+    spacer.style.height = "0px";
+  }
+
+  function update(){
+    if (bar.classList.contains("d-none")) { unpin(); return; }
+
+    const navHeight = navbar.getBoundingClientRect().height;
+    const pinned = bar.classList.contains("is-pinned");
+
+    if (!pinned) {
+      if (bar.getBoundingClientRect().top <= navHeight) {
+        pin(navHeight);
+      }
+    } else {
+      if (spacer.getBoundingClientRect().top > navHeight) {
+        unpin();
+      } else {
+        bar.style.top = `${navHeight}px`;
+      }
+    }
+  }
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
 }
 
 function renderProjectPage(){
@@ -305,11 +574,6 @@ function renderProjectPage(){
     bg.innerHTML = "";
     hero.classList.remove("project-hero--youtube", "project-hero--vimeo");
 
-  // fallback poster (works for both)
-  if (work.heroImage) {
-    hero.style.setProperty("--hero-image", `url('${work.heroImage}')`);
-  }
-
   // Prefer Vimeo if present, else YouTube
   if (work.heroVimeoId) {
     hero.classList.add("project-hero--vimeo");
@@ -319,7 +583,7 @@ function renderProjectPage(){
       "autoplay=1",
       "muted=1",
       "loop=1",
-      "background=1",  // hides UI, makes it behave like a background (best)
+      "background=1",
       "title=0",
       "byline=0",
       "portrait=0"
@@ -368,13 +632,19 @@ const h1 = document.getElementById("projectTitle");
 const client = document.getElementById("projectClient");
 
 if (h1) h1.textContent = work.title;
-if (client) client.textContent = work.client || ""; // avoid "undefined"
+if (client) client.textContent = work.client || "";
 
-  // OVERVIEW
-  const overview = document.getElementById("projectOverview");
+// OVERVIEW
+const overview = document.getElementById("projectOverview");
   if(overview){
-    overview.innerHTML = (work.overview || []).map(p => `<p class="text-muted-custom mb-3">${escapeHtml(p)}</p>`).join("");
+    overview.innerHTML = (work.overview || []).map(p => `<p class="text-muted-custom mb-3">${(p)}</p>`).join("");
   }
+
+// External link
+if (work.externalLink) {
+  const linkHTML = `<a href="${work.externalLink}" target="_blank" class="btn-ext">See More</a>`;
+  document.getElementById("projectOverview").innerHTML += linkHTML;
+}
 
 // SNIPPETS
 const gal = document.getElementById("projectGallery");
@@ -407,6 +677,10 @@ function initSnippetLightbox(){
     lightbox.classList.remove("active");
   });
 }
+
+/* =========================================================
+   Featured Grid + Slider (index.html)
+   ========================================================= */
 
 function renderFeaturedGrid(){
   const mount = document.getElementById("featuredGrid");
@@ -449,6 +723,7 @@ function renderFeaturedGrid(){
   initFeaturedSlider();
 }
 
+// Simple crossfade for multiple featured images (if any)
 function initFeaturedCrossfades(){
   document.querySelectorAll(".project-image-cycle").forEach(cycle => {
     const imgs = Array.from(cycle.querySelectorAll("img"));
@@ -606,7 +881,7 @@ function initFeaturedSlider(){
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  renderFeaturedGrid();   // NEW (index)
+  renderFeaturedGrid();   // index.html
   renderWorksList();      // works.html
   renderProjectPage();    // project.html
 });

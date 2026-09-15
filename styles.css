@@ -1,6 +1,21 @@
+  @font-face{
+  font-family: "PP Neue Machina";
+  src: url("assets/PPNeueMachina-Ultrabold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+  @font-face{
+  font-family: "PP Neue Machina Regular";
+  src: url("assets/PPNeueMachina-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
 :root{
   /* =========================================
-     EDIT ME: COLORS (your scheme)
+     Color Scheme
      ========================================= */
   --brand: #cf436b;
   --bg: #e4e4e4;
@@ -14,21 +29,26 @@
   --tint: rgba(207,67,107,.07);
   --dark: #343440;
 
-  /* EDIT ME: LAYOUT TOKENS */
+  /* Layout */
   --container-max: 1120px;
   --radius: 0px;
   --section-y: 72px;
-  --shadow: none; /* REVAMP: flatter, image-box style */
+  --shadow: none;
 
-  /* EDIT ME: FONTS (names only) */
-  --font-title: "PP Neue Machina", "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --font-body: 'peridot-pe-variable', sans-serif;
+  /* Fonts */
+  --font-title: "PP Neue Machina", "locator-web", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-subtitle: "PP Neue Machina Regular", "locator-web", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-body: 'peridot-pe-variable', 'Open Sans', sans-serif;
 }
 
 /* =========================
-   CUSTOM CURSOR
+   Cursor
    ========================= */
-  @media (hover: hover) and (pointer: fine){
+  body{
+  padding-top: 57px;
+}
+  
+   @media (hover: hover) and (pointer: fine){
 
   html, body{
     cursor: none;
@@ -39,7 +59,7 @@
     cursor: none;
   }
 
-  /* WHITE CENTER DOT */
+  /* White dot */
   .cursor-dot{
     position: fixed;
     top: 0;
@@ -54,7 +74,7 @@
     opacity: 0;
   }
 
-  /* PINK LAG CIRCLE (filled, translucent) */
+  /* Pink ring */
   .cursor-ring{
     position: fixed;
     top: 0;
@@ -63,7 +83,7 @@
     height: 60px;
     border-radius: 50%;
 
-    background: rgba(207,67,107,.25); /* translucent pink */
+    background: rgba(207,67,107,.25);
 
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -80,7 +100,7 @@
   .cursor-ring.is-link{
     width: 100px;
     height: 100px;
-    background: rgba(207,67,107,.4); /* stronger when hovering */
+    background: rgba(207,67,107,.4); 
   }
 }
 
@@ -105,7 +125,6 @@ a:hover{ color: var(--brand); }
 
 .section{ 
   padding: var(--section-y) 0;
-  /* Allow each section to have its own background color */
   background: var(--section-bg, transparent);
 }
 
@@ -122,7 +141,7 @@ a:hover{ color: var(--brand); }
 .section--brand a, .section--dark a{ color: inherit; }
 .section--brand a:hover, .section--dark a:hover{ opacity: .85; }
 
-/* REVAMP: make the "Featured" grid feel like a compact gallery */
+/* Featured grid */
 .featured-grid{
   --bs-gutter-x: 14px;
   --bs-gutter-y: 14px;
@@ -135,7 +154,7 @@ a:hover{ color: var(--brand); }
   }
 }
 
-/* Work Video */
+/* Work video */
 .work-hero-video{
   position: absolute;
   top: 50%;
@@ -153,7 +172,26 @@ a:hover{ color: var(--brand); }
 }
 
 
-/* REVAMP: clickable tile wrapper (keeps your layout intact; only changes look) */
+.works-tabs-bar{
+  position: relative;
+  z-index: 20;
+  background: #e4e4e4d9;
+  backdrop-filter: blur(7px);
+  border-bottom: 1px solid var(--border);
+}
+
+.works-tabs-bar.is-pinned{
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.works-tabs-bar-spacer{
+  height: 0;
+}
+
+
+/* Clickable tile wrapper */
 .work-tile{
   display: block;
 }
@@ -162,7 +200,7 @@ a:hover{ color: var(--brand); }
   position: relative;
 }
 
-/* REVAMP: subtle title reveal on hover (like editorial grids) */
+/* Subtle title reveal on hover */
 .work-overlay{
   position: absolute;
   inset: 0;
@@ -199,7 +237,6 @@ a:hover{ color: var(--brand); }
   }
 }
 
-/* REVAMP: caption under tile (keeps content visible even without hover) */
 .work-meta{
   padding-top: 10px;
 }
@@ -212,7 +249,7 @@ a:hover{ color: var(--brand); }
 }
 
 /* =========================
-   SCROLL REVEAL (all sections)
+   Scroll reveal for all sections
    ========================= */
 
 .section{
@@ -238,67 +275,18 @@ a:hover{ color: var(--brand); }
 
 .text-muted-custom{ color: var(--muted) !important; }
 
-/* NAV */
+/* =========================
+   Navbar
+   ========================= */
 .navbar{
   background: #e4e4e4d9;
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(7px);
 }
 
-/* CARDS */
-.card-surface{
-  /* REVAMP: flatten all 'cards' (no rounding, no shadow) */
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.project-tile{
-  background: transparent;
-  border: 0;
-}
-
-.block-brand{
-  /* REVAMP: keep color-block sections, but flatten (no shadow / no rounded container) */
-  background: var(--brand);
-  color: var(--bg);
-  border-radius: 0;
-  border: 1px solid rgba(255,255,255,.25);
-  box-shadow: none;
-  overflow: hidden;
-}
-.block-brand .text-muted-custom{ color: rgba(228,228,228,.85) !important; }
-
-/* FIND ME — clickable card */
-.btn-brand{
-  background: var(--brand);
-  border: 1px solid rgba(52,52,64,.12);
-  color: #ffffff;
-  font-weight: 700;
-}
-.btn-brand:hover{ 
-  background-color: #b83b60; /* slightly darker pink */
-  border-color: #b83b60;
-  color: #ffffff;
-  transform: scale(1.05); /* subtle lift */
-  transition: transform 0.3s cubic-bezier(.2,.8,.2,1);
-
-}
-
-.find-me-link{
-  display: block;
-  transition: transform 0.3s cubic-bezier(.2,.8,.2,1);
-  transform-origin: left;
-}
-
-.find-me-link:hover{
-  transform: scale(1.05);
-  color: #e4e4e4;
-  text-decoration: none;
-}
-
-/* HERO TITLE + VIDEO OVERLAY */  
+/* =========================
+   Hero section: big title + video
+   ========================= */
 /* Remove section spacing ONLY for hero */
 .hero-section{
   padding-top: 0;
@@ -308,44 +296,38 @@ a:hover{ color: var(--brand); }
 
 .hero-title-stage{
   position: relative;
-  height: 100vh;     /* fallback */
-  height: 100dvh;    /* modern correct viewport height */
+  height: 100vh;     
+  height: 100dvh;  
   width: 100%;
   overflow: hidden;
   display: grid;
   place-items: center;
 }
 
-/* Big title text */
+
 /* Full-height 3-row typography grid */
 .hero-type-grid{
   position: relative;
   height: 100vh;
   height: 100dvh;
-  width: 100%;
-  overflow: hidden;
-
+  width: 100%;;
+  padding-top: 1vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Each row takes exactly 1/3 height */
 .hero-row{
   flex: 1;
   display: flex;
   align-items: center;
   padding-inline: clamp(16px, 4vw, 56px);
-
-  font-family: var(--font-title); /* placeholder ok */
+  font-family: var(--font-title); 
   font-weight: 800;
   text-transform: uppercase;
   line-height: .85;
   letter-spacing: .01em;
   color: #343440;
-
-  /* Big type that scales with viewport */
   font-size: clamp(4.5rem, 20vw, 19rem);
-
   margin: 0;
 }
 
@@ -363,7 +345,7 @@ a:hover{ color: var(--brand); }
   z-index: 0;
 }
 
-/* ZHAN .... YI (space-between) */
+/* ZHAN YI (space-between) */
 .hero-row--between{
   justify-content: space-between;
   z-index: 2;
@@ -376,7 +358,7 @@ a:hover{ color: var(--brand); }
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;     /* fills screen */
+  object-fit: contain;   
   z-index: 1;
   pointer-events: none;
 }
@@ -384,8 +366,8 @@ a:hover{ color: var(--brand); }
 @media (max-width: 991px){
 
   .hero-type-grid{
-    height: auto;          /* remove full screen height */
-    min-height: unset;     /* safety reset */
+    height: auto;   
+    min-height: unset;     
     padding-top: 20px;
     padding-bottom: 0;
   }
@@ -397,7 +379,7 @@ a:hover{ color: var(--brand); }
 
 }
 
-/* BIG TITLE STYLE (like your portfolio spreads) */
+/* BIG TITLE STYLE */
 .big-title{
   font-size: clamp(3rem, 12vw, 6rem);
   line-height: .95;
@@ -425,8 +407,7 @@ a:hover{ color: var(--brand); }
 }
 
 /* =========================
-   PROJECT IMAGE CYCLER
-   smooth crossfade version
+   Project image cycle
    ========================= */
 
 .project-image-cycle{
@@ -461,7 +442,7 @@ a:hover{ color: var(--brand); }
 }
 
 /* ================================
-   FEATURED WORKS SCROLL
+   Featured works scroll
 ================================ */
 
 .featured-slider{
@@ -495,13 +476,13 @@ a:hover{ color: var(--brand); }
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  margin-top: 18px;
+  gap: 12px;
+  margin-top: 40px;
 }
 
 .featured-slider__dot{
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
   border: 0;
   padding: 0;
@@ -512,6 +493,8 @@ a:hover{ color: var(--brand); }
 .featured-slider__dot.is-active{
   background: rgba(52,52,64,.65);
   transform: scale(1.15);
+  cursor: none;
+
 }
 
 @media (max-width: 991px){
@@ -534,8 +517,68 @@ a:hover{ color: var(--brand); }
    Works index + Standardised Project page
    ========================================================= */
 
-/* Works list (vertical preview rows) */
+.works-tabs{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 14px 0;
+}
+
+.works-tabs::-webkit-scrollbar{
+  display: none;
+}
+
+.works-tab{
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  padding: 8px 0;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+
+@media (hover: hover){
+  .works-tab:hover{
+    color: var(--text);
+  }
+}
+
+.works-tab.is-active{
+  color: var(--brand);
+  font-weight: 700;
+}
+
+/* Works list (vertical preview rows), grouped by company */
 .works-list{
+  display:flex;
+  flex-direction:column;
+  gap: 0px;
+}
+
+.works-group{
+  scroll-margin-top: 120px; /* keeps heading clear of the fixed nav + sticky tabs */
+}
+
+.works-group + .works-group{
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  padding-top: 2.5rem;
+}
+
+.works-group__title{
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  letter-spacing: .01em;
+  margin-bottom: .5rem;
+}
+
+.works-group__list{
   display:flex;
   flex-direction:column;
   gap: 0px;
@@ -546,7 +589,6 @@ a:hover{ color: var(--brand); }
   grid-template-columns: 1.1fr 1fr;
   gap: 3rem;
   align-items: stretch;
-  border-top: 1px solid var(--border);
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: inherit;
@@ -615,11 +657,13 @@ a:hover{ color: var(--brand); }
   }
 }
 
-/* Project template: full-screen hero */
+/* =========================
+   Project template
+   ========================= */
 .project-hero{
   position: relative;
   padding: 0;
-  aspect-ratio: 16 / 9;   /* pick what suits your images */
+  aspect-ratio: 16 / 9;  
   overflow: hidden;
 }
 
@@ -633,7 +677,7 @@ a:hover{ color: var(--brand); }
 }
 
 .project-hero--youtube .project-hero__bg{
-  background-image: none; /* video takes over */
+  background-image: none;
 }
 
 /* YouTube cover crop */
@@ -648,7 +692,7 @@ a:hover{ color: var(--brand); }
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 177.78vh; /* 16:9 cover trick */
+  width: 177.78vh;
   height: auto;
   min-width: 100%;
   min-height: 100%;
@@ -694,7 +738,42 @@ a:hover{ color: var(--brand); }
   font-size: 1rem;
 }
 
-/* GRID CONTAINER */
+/* =========================
+   Lightbox
+   ========================= */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+
+.lightbox.active{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#lightbox-img{
+  max-width: min(92vw, 1400px);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* =========================
+   Snippets grid (for project page)
+   ========================= */
 .snippets-grid{
   display: block;
   column-count: 2;
@@ -702,24 +781,25 @@ a:hover{ color: var(--brand); }
   grid-auto-flow: dense;
 }
 
-/* TILE */
+/* Tile */
 .snip{
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
-  margin: 0 0 16px;              /* vertical gap between tiles */
+  margin: 0 0 16px;            
   display: block;
 }
 
-/* IMAGE */
+/* Image */
 .snippet-img{
   width: 100% !important;
-  height: auto !important;       /* IMPORTANT */
+  height: auto !important;   
   max-width: 100%;
   display: block;
-  object-fit: contain;           /* safe with height:auto */
+  object-fit: contain;           
+  cursor: zoom-in;
 }
 
-/* MOBILE */
+/* Mobile */
 @media (max-width: 900px){
   .snippets-grid{
     column-count: 1;
@@ -727,45 +807,32 @@ a:hover{ color: var(--brand); }
   }
 }  
 
-/* Project next/prev */
-.project-nav{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+/* External button */
+.btn-ext {
+  color: #cf436b; 
+  text-decoration: none;
+  font-weight: normal; 
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-.project-nav__card{
-  border: 1px solid var(--border);
-  padding: 18px;
-  background: rgba(255,255,255,.4);
-  transition: transform .25s cubic-bezier(.2,.8,.2,1);
+.btn-ext:hover {
+  color: #a13b5d; 
+  text-decoration: underline;
 }
 
-.project-nav__card:hover{
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px){
-  .project-nav{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Flatten card-surface for this editorial look (still keeps border) */
-.card-surface{
-  box-shadow: none; /* REVAMP: remove “rounded card” vibe */
-}
-
-/* ABOUT HERO (4-row type + flush-right video) */
+/* =========================
+   About hero: 4-row grid + video
+   ========================= */
 .about-hero{
-  --s: 1; /* default scale */
+  --s: 1; 
   --s: clamp(0.78, 0.92, 1);
   padding-top: 20px;
   padding-bottom: 20px;
   margin-top: 0;
 
   position: relative;
-  height: auto;   /* fallback */
+  height: auto;  
   width: 100%;
   overflow: hidden;
 
@@ -776,7 +843,7 @@ a:hover{ color: var(--brand); }
 .about-hero__grid{
   position: relative;
   width: 100%;
-  height: auto;          /* remove full screen height */
+  height: auto;       
   min-height: unset;
   display: flex;
   flex-direction: column;
@@ -835,14 +902,15 @@ a:hover{ color: var(--brand); }
   z-index: -1;
   pointer-events: none;
 }
+
 /* default: desktop */
 .about-blurb{ display: none; }
 
 @media (max-width: 1300px){
 
   .about-hero__grid{
-    height: auto;          /* remove full screen height */
-    min-height: unset;     /* safety reset */
+    height: auto;         
+    min-height: unset;   
     padding-top: 20px;
     padding-bottom: 0;
   }
@@ -886,7 +954,7 @@ a:hover{ color: var(--brand); }
 }
 
 /* =========================
-  SKILLS + SOFTWARES: hover to reveal text
+  Skills + Softwares + Education section (hover reveals content)
    ========================= */
 
 .skills-softwares{
@@ -900,11 +968,10 @@ a:hover{ color: var(--brand); }
 }
 
 .skills-softwares__title{
-  font-family: var(--font-title);
+  font-family: var(--font-subtitle);
   font-size: clamp(1.8rem, 4.2vw, 4.25rem);
   letter-spacing: .01em;
   line-height: .95;
-  cursor: pointer;
   color: var(--muted);
   transition: color .25s ease, transform .3s ease;
   position: relative;
@@ -1016,127 +1083,8 @@ a:hover{ color: var(--brand); }
 }
 
 /* =========================
-   CONTACT SECTION — DESKTOP IMAGE
+   Footer
    ========================= */
-
-.contact-desktop-video{
-  width: 100%;
-  max-width: 360px;   /* SAME as .contact-desktop-img */
-  height: auto;       /* keeps natural aspect ratio */
-  object-fit: contain;
-  display: block;      /* hidden by default */
-  margin-top: auto;
-  pointer-events: none;
-}
-
-/* Show only on laptop & up */
-@media (max-width: 992px){
-  .contact-desktop-video{
-    display: none;
-  }
-}
-
-/* FORMS */
-.form-control, .form-select{
-  background: rgba(255,255,255,.75);
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-.form-control:focus, .form-select:focus{
-  border-color: rgba(207,67,107,.55);
-  box-shadow: 0 0 0 .2rem rgba(207,67,107,.15);
-}
-
-/* =========================
-   FLATPICKR — MONTH / YEAR
-   ========================= */
-
-.flatpickr-current-month .flatpickr-monthDropdown-months{
-  font-size: 1rem !important;
-  font-weight: 700 !important;
-  text-align: center !important;
-  margin: 0 auto !important;
-}
-
-.flatpickr-current-month .cur-year{
-  font-size: 1rem !important;
-  font-weight: 700 !important;
-  text-align: center;
-}
-
-.flatpickr-weekday{ 
-  color: #343440; 
-  opacity: .6; 
-  font-weight: 500; 
-}
-
-.flatpickr-day.today{  
-  color: #cf436b; 
-  font-weight: 700; 
-}
-
-/* Hover on any enabled day */
-.flatpickr-calendar .flatpickr-day:not(.disabled):hover{
-  background: #ff95b3 !important;
-  border-color: #ff95b3 !important;
-  color: #ffffff !important;
-}
-
-/* Hover on TODAY specifically */
-.flatpickr-calendar .flatpickr-day.today:not(.disabled):hover{
-  background: #ff95b3 !important;
-  border-color: #ff95b3 !important;
-  color: #ffffff !important;
-}
-
-/* Selected (default state) */
-.flatpickr-calendar .flatpickr-day.selected,
-.flatpickr-calendar .flatpickr-day.startRange,
-.flatpickr-calendar .flatpickr-day.endRange{
-  background: #cf436b !important;
-  border-color: #cf436b !important;
-  color: #ffffff !important;
-}
-
-.flatpickr-calendar .flatpickr-day.today{
-  box-shadow: none !important;
-  color: #cf436b  !important; 
-  background: transparent !important;
-  border-color: #ffffff !important;
-}
-
-
-.lightbox{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .25s ease;
-
-  z-index: 9999;
-}
-
-.lightbox.active{
-  opacity: 1;
-  visibility: visible;
-}
-
-.lightbox img{
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-}
-
-.snippet-img{
-  cursor: zoom-in;
-}
-
-/* FOOTER */
 footer{
   border-top: 1px solid var(--border);
   padding: 22px 0;
