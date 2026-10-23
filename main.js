@@ -1,5 +1,5 @@
 /* =========================================================
-   15 sept
+    21 oct
 
     Custom Cursor 
    ========================================================= */
@@ -47,7 +47,7 @@
   const clickableSelector = `
     a, button, .btn, [role='button'],
     input[type='submit'], input[type='button'],
-    select, textarea, .form-control, .snippet-img,
+    select, textarea, .form-control, .snippet-img, .snippet-video,
     .skills-trigger-software, .skills-trigger-skills, .skills-trigger-education
   `;
 
@@ -107,21 +107,22 @@ const FALLBACK_GROUP = "Personal Projects";
 const WORKS = [
   {
     id: "AEB",
-    title: "Apple English Breakfast",
+    title: "CHAGEE × Tate\nApple English Breakfast Tea",
     year: "2026",
     company: "CHAGEE",
     teaser: "Promoted active ageing in Singapore through a senior-focused \"Amazing Race\" in Yuhua.",
     overview: [
-      "<b> The Community Outreach </b> project focused on promoting active ageing in Singapore through an “Amazing Race” designed for seniors in the Yuhua community.",
-      "As part of the publicity team, I served as the designer responsible for the promotional poster and the final academic poster summarising our 12-week process and outcomes. Designing for an elderly audience required a strong focus on accessibility, including larger type, higher contrast, simplified layouts, and a bilingual English–Chinese version. Considering digital literacy, printed posters were prioritized, supported by a targeted WhatsApp broadcast for effective outreach. The publicity materials successfully attracted the target 50 senior participants, meeting the event quota and earning strong appreciation from our community partner. This project deepened my ability to design with empathy and adapt visual communication to real-world community needs."
-    ],
-    heroImage: "assets/works/outreach/flyer.webp",
+      "<b> The CHAGEE × Tate Apple English Breakfast Tea </b> campaign brought CHAGEE together with UK-based Tate to launch a new apple-infused English Breakfast tea across the APAC region.",
+      "As my first major collaboration at CHAGEE, this was a campaign I was excited to be part of, with high visibility and reach across the region. I created the full suite of in-app content, a bundle of mostly static assets with a small animated icon to spotlight campaign activity. I then carried the collaboration into stores through physical display posters and point-of-sales touchpoints, so customers met one consistent story from screen to shelf.",
+      "Working with a UK-based IP partner raised the stakes. Every asset went through partner approvals across time zones, which compressed timelines and left little room for revisions. I learned to plan ahead, get details right the first time, and keep every piece true to both brands. The project taught me to deliver at scale under pressure, and gave me my first real experience of an international, cross-brand collaboration."
+      ],
+    heroImage: "assets/works/chagee-aeb/aeb-cover.webp",
     snippets: [
-      "assets/works/outreach/flyer.webp", 
-      "assets/works/outreach/poster.webp",
-      "assets/works/outreach/1.webp",
-      "assets/works/outreach/2.webp",
-      "assets/works/outreach/3.webp",
+      "assets/works/chagee-aeb/aeb-1.webp", 
+      "assets/works/chagee-aeb/aeb-2.webm",
+      "assets/works/chagee-aeb/aeb-3.webp",
+      "assets/works/chagee-aeb/2.webp",
+      "assets/works/chagee-aeb/3.webp",
     ],
     thumbnail: "assets/works/outreach/flyer.webp",
     featured: true,
@@ -145,7 +146,7 @@ const WORKS = [
       "Built using HTML, CSS, and JavaScript, the site incorporates dynamic project pages, responsive layouts, and interactive image cycling to create a smooth and adaptable experience across devices. This project became both a showcase for my work and a testing ground for refining my approach to digital design, balancing visual clarity with functional interaction.",
     ],
     heroImage: "assets/works/website/thumbnail.webp",
-    heroVimeoId: "1172167340",
+    heroVimeoId: "1187181196",
     snippets: [
       "assets/works/website/thumbnail.webp",
       "assets/works/website/thumbnail-2.webp",
@@ -173,7 +174,7 @@ const WORKS = [
       "<b> The RSD Film </b> is a short social media video driven by my interest in vinyl collecting, created to promote Record Store Day 2025. The video brings viewers through the vinyl ritual, from digging in-store to playing the record, which aimed to reignite interest in physical media.</strong>",
       "Produced solely by myself, the project relied on  self-sourced equipment and the support of a local record store (@wowfactorrecords). This limitation forced me to focus on visual storytelling and typography to convey mood, pacing, and intention. The final video was well received by my lecturer and strengthened my skill as a visual storyteller."
     ],
-    heroVimeoId: "1169617733",
+    heroVimeoId: "1228763019",
     snippets: [
       "assets/works/rsd-film/01.webp",
       "assets/works/rsd-film/02.webp",
@@ -283,7 +284,7 @@ const WORKS = [
       "Additionally, I worked on the Clinic Posters project, a revamp of posters for BMF Clinic’s new centre. Using a minimalist palette of white and grey, I focused on restrained typography and grid systems to convey professionalism and clarity. This project deepened my understanding of how layout, typography, and visual consistency contribute to trust and credibility in the healthcare context."
     ],
     heroImage: "assets/works/bmf-print/1.webp",
-    heroVimeoId: "1172449312",
+    heroVimeoId: "1187178681",
     snippets: [
       "assets/works/bmf-print/clinic.webp",
       "assets/works/bmf-print/clinic-mock-1.webp",
@@ -651,14 +652,30 @@ if (work.externalLink) {
 // SNIPPETS
 const gal = document.getElementById("projectGallery");
 if (gal) {
-  gal.innerHTML = (work.snippets || []).map(src => `
-    <figure class="snip">
-      <img class="snippet-img"
-           src="${escapeHtml(src)}"
-           alt="${escapeHtml(work.title)} image snippet"
-           loading="lazy">
-    </figure>
-  `).join("");
+  gal.innerHTML = (work.snippets || []).map(src => {
+    const isVideo = /\.(webm|mp4)$/i.test(src);
+
+    if (isVideo) {
+      return `
+        <figure class="snip">
+          <video class="snippet-video"
+                 src="${escapeHtml(src)}"
+                 autoplay muted loop playsinline
+                 preload="metadata"
+                 aria-label="${escapeHtml(work.title)} video snippet"></video>
+        </figure>
+      `;
+    }
+
+    return `
+      <figure class="snip">
+        <img class="snippet-img"
+             src="${escapeHtml(src)}"
+             alt="${escapeHtml(work.title)} image snippet"
+             loading="lazy">
+      </figure>
+    `;
+  }).join("");
 
   initSnippetLightbox();
 }
@@ -667,16 +684,37 @@ if (gal) {
 function initSnippetLightbox(){
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxVideo = document.getElementById("lightbox-video");
+  if (!lightbox || !lightboxImg || !lightboxVideo) return;
 
-  document.querySelectorAll(".snippet-img").forEach(img=>{
-    img.addEventListener("click", ()=>{
+  // Images
+  document.querySelectorAll(".snippet-img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxVideo.pause();
+      lightboxVideo.style.display = "none";
+
       lightboxImg.src = img.src;
+      lightboxImg.style.display = "block";
       lightbox.classList.add("active");
     });
   });
 
-  lightbox.addEventListener("click", ()=>{
+  // Videos
+  document.querySelectorAll(".snippet-video").forEach(vid => {
+    vid.addEventListener("click", () => {
+      lightboxImg.style.display = "none";
+
+      lightboxVideo.src = vid.currentSrc || vid.src;
+      lightboxVideo.style.display = "block";
+      lightboxVideo.play().catch(() => {});
+      lightbox.classList.add("active");
+    });
+  });
+
+  // Close on click anywhere
+  lightbox.addEventListener("click", () => {
     lightbox.classList.remove("active");
+    lightboxVideo.pause();
   });
 }
 

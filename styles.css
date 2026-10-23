@@ -762,7 +762,8 @@ a:hover{ color: var(--brand); }
   pointer-events: auto;
 }
 
-#lightbox-img{
+#lightbox-img,
+#lightbox-video{
   max-width: min(92vw, 1400px);
   max-height: 90vh;
   width: auto;
@@ -789,7 +790,7 @@ a:hover{ color: var(--brand); }
   display: block;
 }
 
-/* Image */
+/* Snippet Image + Video */
 .snippet-img{
   width: 100% !important;
   height: auto !important;   
@@ -797,6 +798,12 @@ a:hover{ color: var(--brand); }
   display: block;
   object-fit: contain;           
   cursor: zoom-in;
+}
+
+.snippet-video{
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Mobile */
