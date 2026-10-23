@@ -1,5 +1,5 @@
 /* =========================================================
-    21 oct
+    23 oct
 
     Custom Cursor 
    ========================================================= */
@@ -110,7 +110,7 @@ const WORKS = [
     title: "CHAGEE × Tate\nApple English Breakfast Tea",
     year: "2026",
     company: "CHAGEE",
-    teaser: "Promoted active ageing in Singapore through a senior-focused \"Amazing Race\" in Yuhua.",
+    teaser: "Bringing a cross-brand collaboration with UK-based Tate to life across in-app and in-store touchpoints in APAC.",
     overview: [
       "<b> The CHAGEE × Tate Apple English Breakfast Tea </b> campaign brought CHAGEE together with UK-based Tate to launch a new apple-infused English Breakfast tea across the APAC region.",
       "As my first major collaboration at CHAGEE, this was a campaign I was excited to be part of, with high visibility and reach across the region. I created the full suite of in-app content, a bundle of mostly static assets with a small animated icon to spotlight campaign activity. I then carried the collaboration into stores through physical display posters and point-of-sales touchpoints, so customers met one consistent story from screen to shelf.",
@@ -121,18 +121,69 @@ const WORKS = [
       "assets/works/chagee-aeb/aeb-1.webp", 
       "assets/works/chagee-aeb/aeb-2.webm",
       "assets/works/chagee-aeb/aeb-3.webp",
-      "assets/works/chagee-aeb/2.webp",
-      "assets/works/chagee-aeb/3.webp",
+      "assets/works/chagee-aeb/aeb-4.webp",
     ],
-    thumbnail: "assets/works/outreach/flyer.webp",
+    thumbnail: "assets/works/chagee-aeb/aeb-thumbnail.webp",
     featured: true,
     featuredSub: "2024 • Print",
     featuredImages: [
-      "assets/works/outreach/flyer.webp",
-      "assets/works/outreach/poster.webp",
+      "assets/works/chagee-aeb/aeb-thumbnail.webp",
+      "assets/works/chagee-aeb/aeb-cover.webp",
+      "assets/works/chagee-aeb/aeb-3.webp",
     ]
   },  
-
+  {
+    id: "barista",
+    title: "APAC Barista Championship",
+    year: "2026",
+    company: "CHAGEE",
+    teaser: "Refreshing the visual identity of CHAGEE's regional barista competition into a timeless system built to last.",
+    overview: [
+      "<b> The APAC Barista Competition </b> celebrated the skill and craft behind every cup at CHAGEE, bringing baristas from across the APAC region to compete and showcase their expertise.",
+      "Returning for its second edition, the competition called for a visual identity that departed from the previous year's without losing what made it recognizable. I developed a new visual direction that drew inspiration from the original design, carrying over key elements of its visual language while reinterpreting them to fit the CHAGEE brand. The brief also looked beyond this year: the identity had to be adaptable and timeless, so it could be reused and built upon in future editions. From there, I created the full suite of campaign assets, carrying the new direction consistently through every piece. The project deepened my understanding of brand identity design, from interpreting a layered brief to building a visual system flexible enough to adapt across a wide range of applications.",
+      "<i>Competition highlights compiled by CHAGEE, sourced from <a href=\"https://www.instagram.com/reel/Dev7LLOuNVp/?utm_source=ig_web_copy_link&dlrf=NTc4MTIwNjQ2YQ==\" target=\"_blank\" rel=\"noopener\">CHAGEE's official Instagram</a>.</i>"
+      ],
+    heroVimeoId: "1238729708",
+    snippets: [
+      "assets/works/chagee-barista/barista-2.webp",
+      "assets/works/chagee-barista/barista-1.webp",
+      "assets/works/chagee-barista/barista-3.webp",
+    ],
+    thumbnail: "assets/works/chagee-barista/barista-thumbnail.webp",
+    featured: true,
+    featuredSub: "2026 • Campaign",
+    featuredImages: [
+      "assets/works/chagee-barista/barista-thumbnail-small.webp",
+      "assets/works/chagee-barista/barista-2.webp",
+    ]
+  },
+  {
+    id: "bestea",
+    title: "Bes-Tea Brew Crew",
+    year: "2026",
+    company: "CHAGEE",
+    teaser: "A friendship-themed campaign starring six BES-TEA plushies, celebrating the bonds shared over tea.",
+    overview: [
+      "<b> The Bes-Tea Brew Crew </b> campaign featured six Bes-Tea plushies, bringing friendship and togetherness to life and inviting customers to share their tea moments with the people closest to them. Its creative direction was later extended into an International Friendship Day activation, carrying the campaign into a timely new moment.",
+      "For the main campaign, I designed a new in-app personality quiz that served as the campaign's central activity, alongside the supporting in-app assets, digital collaterals, and a poster. Designing the quiz meant thinking beyond static visuals, shaping an interactive experience that felt playful and on-brand while staying intuitive to navigate. Alongside the campaign, I also designed a new landing page for CHAGEE's app membership revamp, which pushed me further into designing for the app as a product rather than just a campaign channel.",
+      "I then extended the Bes-Tea Brew Crew direction into an International Friendship Day activation, this time for internal staff and outlets across the region. With the event running alongside the main campaign, I designed the full set of collaterals on my own under a tight timeline, reworking the campaign's look into a celebration for the teams behind every cup. Juggling both taught me to prioritize quickly and carry one creative direction across different audiences."
+      ],
+    heroImage: "assets/works/chagee-bestea/bestea-cover.webp",
+    snippets: [
+      "assets/works/chagee-bestea/bestea-1.webp",
+      "assets/works/chagee-bestea/bestea-2.webp",
+      "assets/works/chagee-bestea/friendship-1.webp",
+      "assets/works/chagee-bestea/friendship-2.webp",
+    ],
+    thumbnail: "assets/works/chagee-bestea/bestea-thumbnail.webp",
+    featured: true,
+    featuredSub: "2026 • Campaign",
+    featuredImages: [
+      "assets/works/chagee-bestea/bestea-thumbnail.webp",
+      "assets/works/chagee-bestea/bestea-cover.webp",
+      "assets/works/chagee-bestea/friendship-1.webp",
+    ]
+  },
   {
     id: "website",
     title: "Digital Portfolio",
