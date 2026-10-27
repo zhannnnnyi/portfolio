@@ -667,6 +667,11 @@ a:hover{ color: var(--brand); }
   overflow: hidden;
 }
 
+.project-hero__title,
+.work-row__title{
+  white-space: pre-line;
+}
+
 .project-hero__bg{
   position:absolute;
   inset:0;
