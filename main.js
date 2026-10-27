@@ -118,9 +118,10 @@ const WORKS = [
       ],
     heroImage: "assets/works/chagee-aeb/aeb-cover.webp",
     snippets: [
-      "assets/works/chagee-aeb/aeb-1.webp", 
-      "assets/works/chagee-aeb/aeb-2.webm",
       "assets/works/chagee-aeb/aeb-3.webp",
+      "assets/works/chagee-aeb/aeb-5.webp",
+      "assets/works/chagee-aeb/aeb-2.webm",
+      "assets/works/chagee-aeb/aeb-1.webp",
       "assets/works/chagee-aeb/aeb-4.webp",
     ],
     thumbnail: "assets/works/chagee-aeb/aeb-thumbnail.webp",
