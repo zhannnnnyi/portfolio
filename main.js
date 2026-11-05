@@ -978,7 +978,10 @@ function initFeaturedSlider(){
   remount();
 
   let resizeTimer;
+  let lastWidth = window.innerWidth;
   window.addEventListener("resize", () => {
+    if (window.innerWidth === lastWidth) return; // ignore mobile address-bar height changes
+    lastWidth = window.innerWidth;
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(remount, 120);
   }, { passive: true });

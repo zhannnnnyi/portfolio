@@ -1102,6 +1102,32 @@ a:hover{ color: var(--brand); }
 }
 }
 
+/* Touch devices: no hover, so show each list under its title */
+@media (hover: none){
+  .skills-softwares{
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+
+  .skills-softwares__content{
+    grid-column: 1;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 28px;
+  }
+
+  .skills-trigger-software{ grid-row: 1; }
+  .skills-content-software{ grid-row: 2; }
+  .skills-trigger-skills{ grid-row: 3; }
+  .skills-content-skills{ grid-row: 4; }
+  .skills-trigger-education{ grid-row: 5; }
+  .skills-content-education{ grid-row: 6; }
+}
+
 /* =========================
    Footer
    ========================= */
