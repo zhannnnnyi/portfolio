@@ -94,6 +94,22 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================================================
+   Transparent videos
+   WebM for Chrome/Firefox/Android, HEVC (.mov) for Safari
+   and iPhone, which can't show WebM transparency
+   ========================================================= */
+(() => {
+  const isAppleWebKit = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+  document.querySelectorAll("video[data-src-webm]").forEach(video => {
+    video.src = (isAppleWebKit && video.dataset.srcHevc)
+      ? video.dataset.srcHevc
+      : video.dataset.srcWebm;
+    video.play().catch(() => {});
+  });
+})();
+
+/* =========================================================
    Works
    ========================================================= =
    Add a `company` field to any work to group it under that

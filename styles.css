@@ -317,6 +317,7 @@ a:hover{ color: var(--brand); }
 }
 
 .hero-row{
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
@@ -349,7 +350,6 @@ a:hover{ color: var(--brand); }
 .hero-row--between{
   justify-content: space-between;
   z-index: 2;
-  mix-blend-mode: exclusion;
 }
 
 /* Video overlays the title */
@@ -362,6 +362,7 @@ a:hover{ color: var(--brand); }
   z-index: 1;
   pointer-events: none;
 }
+
 
 @media (max-width: 991px){
 
