@@ -571,6 +571,13 @@ a:hover{ color: var(--brand); }
   padding-top: 2.5rem;
 }
 
+/* When filtered to one company, drop the divider above it */
+.works-list.is-filtered .works-group{
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
 .works-group__title{
   font-family: var(--font-title);
   text-transform: uppercase;

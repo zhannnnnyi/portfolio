@@ -494,13 +494,19 @@ function renderWorksList(){
   const groups = groupWorksByCompany();
   const groupNames = Array.from(groups.keys());
 
-  // Tabs (only worth showing if there's more than one group)
+  // Tabs: "All" + one per company (only worth showing if there's more than one group)
   if (tabsMount) {
     if (groupNames.length > 1) {
       tabsMount.classList.remove("d-none");
-      tabsMount.innerHTML = groupNames.map(name => `
-        <button class="works-tab" type="button" data-target="group-${slugify(name)}">
-          ${escapeHtml(name)}
+
+      const tabs = [
+        { label: "All", filter: "all" },
+        ...groupNames.map(name => ({ label: name, filter: `group-${slugify(name)}` }))
+      ];
+
+      tabsMount.innerHTML = tabs.map(t => `
+        <button class="works-tab" type="button" data-filter="${t.filter}">
+          ${escapeHtml(t.label)}
         </button>
       `).join("");
     } else {
@@ -525,46 +531,36 @@ function renderWorksList(){
 
 function initWorksTabs(){
   const tabsMount = document.getElementById("worksTabs");
-  if (!tabsMount) return;
+  const list = document.getElementById("worksList");
+  if (!tabsMount || !list) return;
 
   const tabs = Array.from(tabsMount.querySelectorAll(".works-tab"));
+  const groups = Array.from(list.querySelectorAll(".works-group"));
   if (!tabs.length) return;
 
-  const sections = tabs
-    .map(t => document.getElementById(t.dataset.target))
-    .filter(Boolean);
-
-  // Height of the fixed navbar + sticky tab bar, used to offset scroll targets.
-  function getScrollOffset(){
-    return tabsMount.getBoundingClientRect().bottom + 16;
+  function applyFilter(filter){
+    groups.forEach(g => {
+      g.classList.toggle("d-none", filter !== "all" && g.id !== filter);
+    });
+    list.classList.toggle("is-filtered", filter !== "all");
+    tabs.forEach(t => t.classList.toggle("is-active", t.dataset.filter === filter));
   }
 
   tabsMount.onclick = (e) => {
     const btn = e.target.closest(".works-tab");
     if (!btn) return;
 
-    const target = document.getElementById(btn.dataset.target);
-    if (!target) return;
+    applyFilter(btn.dataset.filter);
 
-    const top = target.getBoundingClientRect().top + window.scrollY - getScrollOffset();
-    window.scrollTo({ top, behavior: "smooth" });
+    // If the visitor has scrolled down, bring them back to the top of the list
+    const offset = tabsMount.getBoundingClientRect().bottom + 16;
+    const listTop = list.getBoundingClientRect().top + window.scrollY - offset;
+    if (window.scrollY > listTop) {
+      window.scrollTo({ top: listTop, behavior: "smooth" });
+    }
   };
 
-  if (!sections.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const idx = sections.indexOf(entry.target);
-      if (idx === -1) return;
-      tabs.forEach((t, i) => t.classList.toggle("is-active", i === idx));
-    });
-  }, {
-    rootMargin: "-35% 0px -55% 0px",
-    threshold: 0
-  });
-
-  sections.forEach(s => observer.observe(s));
+  applyFilter("all");
 }
 
 // Pins the works tab bar to the viewport (below the navbar) once the page
