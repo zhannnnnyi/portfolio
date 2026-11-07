@@ -205,6 +205,32 @@ const WORKS = [
     ]
   },
   {
+    id: "matcha",
+    title: "CHAGEE × The Little Prince\nMatcha Series",
+    year: "2026",
+    company: "CHAGEE",
+    teaser: "Weaving The Little Prince, the Fox, and the Rose into a “Pure at Heart” matcha collaboration.",
+    overview: [
+      "<b> The CHAGEE × The Little Prince Matcha Series </b> brought the story of The Little Prince into CHAGEE's matcha range, centered on the campaign concept “Pure at Heart”.",
+      "I adapted the campaign visuals across digital and physical collaterals, bringing in the story's most recognizable characters: The Little Prince, the Fox, and the Rose. Each piece had to look like CHAGEE while still feeling like the book that so many people grew up with.",
+      "Working with a well-known IP came with strict licensing guidelines, and every use of the characters had to follow them closely. It made me more careful with details, and gave me a better sense of how to tell a brand's story through someone else's."
+    ],
+    heroImage: "assets/works/chagee-matcha/matcha-cover.webp",
+    snippets: [
+      "assets/works/chagee-matcha/matcha-1.webp",
+      "assets/works/chagee-matcha/matcha-2.webp",
+      "assets/works/chagee-matcha/matcha-3.webp",
+    ],
+    thumbnail: "assets/works/chagee-matcha/matcha-thumbnail.webp",
+    featured: true,
+    featuredSub: "2026 • Campaign",
+    featuredImages: [
+      "assets/works/chagee-matcha/matcha-thumbnail.webp",
+      "assets/works/chagee-matcha/matcha-cover.webp",
+      "assets/works/chagee-matcha/matcha-1.webp",
+    ]
+  },
+  {
     id: "website",
     title: "Digital Portfolio",
     year: "2026",

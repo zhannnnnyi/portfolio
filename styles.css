@@ -739,6 +739,33 @@ a:hover{ color: var(--brand); }
   margin-bottom: 18px;
 }
 
+.project-breadcrumb{
+  align-items: center;
+}
+
+.project-breadcrumb__icon{
+  margin-right: 10px;
+  position: relative;
+  top: -1.3px;
+  transition: transform .2s ease;
+}
+
+.project-breadcrumb:hover .project-breadcrumb__icon{
+  transform: translateX(-4px);
+}
+
+.view-all__icon{
+  margin-left: 10px;
+  position: relative;
+  top: -1.3px;
+  display: inline-block;
+  transition: transform .2s ease;
+}
+
+.view-all:hover .view-all__icon{
+  transform: translateX(4px);
+}
+
 .project-hero__title{
   font-size: clamp(3rem, 9vw, 6rem);
   line-height: .92;
