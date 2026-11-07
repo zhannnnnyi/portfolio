@@ -188,7 +188,9 @@ const WORKS = [
     heroImage: "assets/works/chagee-bestea/bestea-cover.webp",
     snippets: [
       "assets/works/chagee-bestea/bestea-1.webp",
+      "assets/works/chagee-bestea/bestea-4.webp",
       "assets/works/chagee-bestea/bestea-vid.webm",
+      "assets/works/chagee-bestea/bestea-5.webp",
       "assets/works/chagee-bestea/bestea-draft.webp",
       "assets/works/chagee-bestea/bestea-2.webp",
       "assets/works/chagee-bestea/bestea-3.webp",
