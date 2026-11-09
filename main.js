@@ -142,7 +142,7 @@ const WORKS = [
     ],
     thumbnail: "assets/works/chagee-aeb/aeb-thumbnail.webp",
     featured: true,
-    featuredSub: "2024 • Print",
+    featuredSub: "2026 • Campaign",
     featuredImages: [
       "assets/works/chagee-aeb/aeb-thumbnail.webp",
       "assets/works/chagee-aeb/aeb-cover.webp",
@@ -200,8 +200,8 @@ const WORKS = [
     featuredSub: "2026 • Campaign",
     featuredImages: [
       "assets/works/chagee-geelato/geelato-thumbnail.webp",
-      "assets/works/chagee-geelato/geelato-cover.webp",
       "assets/works/chagee-geelato/geelato-1.webp",
+      "assets/works/chagee-geelato/geelato-4.webp",
     ]
   },
   {
