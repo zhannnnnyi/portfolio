@@ -872,6 +872,7 @@ a:hover{ color: var(--brand); }
   width: 100%;
   height: auto;
   display: block;
+  clip-path: inset(0 1px 0 0);
 }
 
 /* Mobile */
