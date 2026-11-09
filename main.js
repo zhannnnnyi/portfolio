@@ -810,34 +810,80 @@ function initSnippetLightbox(){
   const lightboxVideo = document.getElementById("lightbox-video");
   if (!lightbox || !lightboxImg || !lightboxVideo) return;
 
-  // Images
-  document.querySelectorAll(".snippet-img").forEach(img => {
-    img.addEventListener("click", () => {
-      lightboxVideo.pause();
-      lightboxVideo.style.display = "none";
+  const prevBtn = lightbox.querySelector(".lightbox__nav--prev");
+  const nextBtn = lightbox.querySelector(".lightbox__nav--next");
 
-      lightboxImg.src = img.src;
-      lightboxImg.style.display = "block";
-      lightbox.classList.add("active");
-    });
-  });
+  // Every snippet, images and videos, in page order
+  const items = Array.from(document.querySelectorAll(".snippet-img, .snippet-video"));
+  if (!items.length) return;
 
-  // Videos
-  document.querySelectorAll(".snippet-video").forEach(vid => {
-    vid.addEventListener("click", () => {
+  // Hide the arrows if there's only one snippet
+  if (items.length < 2) {
+    prevBtn?.classList.add("d-none");
+    nextBtn?.classList.add("d-none");
+  }
+
+  let current = 0;
+
+  function show(i){
+    current = (i + items.length) % items.length; // wraps around at either end
+    const item = items[current];
+
+    if (item.tagName === "VIDEO") {
       lightboxImg.style.display = "none";
-
-      lightboxVideo.src = vid.currentSrc || vid.src;
+      lightboxVideo.src = item.currentSrc || item.src;
       lightboxVideo.style.display = "block";
       lightboxVideo.play().catch(() => {});
-      lightbox.classList.add("active");
-    });
-  });
+    } else {
+      lightboxVideo.pause();
+      lightboxVideo.style.display = "none";
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.alt;
+      lightboxImg.style.display = "block";
+    }
+  }
 
-  // Close on click anywhere
-  lightbox.addEventListener("click", () => {
+  function open(i){
+    show(i);
+    lightbox.classList.add("active");
+  }
+
+  function close(){
     lightbox.classList.remove("active");
     lightboxVideo.pause();
+  }
+
+  // Open on click
+  items.forEach((item, i) => {
+    item.addEventListener("click", () => open(i));
+  });
+
+  // Arrows (stopPropagation so they don't also close the lightbox)
+  prevBtn?.addEventListener("click", (e) => { e.stopPropagation(); show(current - 1); });
+  nextBtn?.addEventListener("click", (e) => { e.stopPropagation(); show(current + 1); });
+
+  // Close on click anywhere else
+  lightbox.addEventListener("click", close);
+
+  // Keyboard: arrows to move, Esc to close
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("active")) return;
+    if (e.key === "ArrowLeft") show(current - 1);
+    if (e.key === "ArrowRight") show(current + 1);
+    if (e.key === "Escape") close();
+  });
+
+  // Swipe on phones
+  let startX = null;
+  lightbox.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  lightbox.addEventListener("touchend", (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    startX = null;
+    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
   });
 }
 
