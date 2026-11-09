@@ -174,6 +174,36 @@ const WORKS = [
       "assets/works/chagee-barista/barista-2.webp",
     ]
   },
+    {
+    id: "geelato",
+    title: "CHAGEE\nGeelato",
+    year: "2026",
+    company: "CHAGEE",
+    teaser: "Bringing a China-launched campaign to Singapore for its first APAC launch, with a new English logo and redesigned collaterals.",
+    overview: [
+      "<b> Geelato </b> first launched in China, and Singapore was chosen as its exclusive first market in APAC.",
+      "As the primary designer for the regional launch, I set the direction and guidelines for APAC by adapting the original China assets. This started with a new English logo for Geelato, followed by redesigned collaterals for the physical touchpoints, including the shop counter display. The display had to use the store's existing fixtures, so I designed new storefront stickers to work around them.",
+      "Since the campaign already existed, the challenge was making it work for a new audience without losing what it was. Creating the English logo meant capturing the feel of the original rather than just translating the name, and working around the existing fixtures made me think about how a design sits in a real space, not just on screen. Handling it on my own gave me hands-on experience localizing a brand for a new market from start to finish."
+    ],
+    heroImage: "assets/works/chagee-geelato/geelato-cover.webp",
+    snippets: [
+      "assets/works/chagee-geelato/geelato-1.webp",
+      "assets/works/chagee-geelato/geelato-2.webp",
+      "assets/works/chagee-geelato/geelato-3.webp",
+      "assets/works/chagee-geelato/geelato-4.webp",
+      "assets/works/chagee-geelato/geelato-5.webp",
+      "assets/works/chagee-geelato/geelato-6.webp",
+      "assets/works/chagee-geelato/geelato-7.webp",
+    ],
+    thumbnail: "assets/works/chagee-geelato/geelato-thumbnail.webp",
+    featured: true,
+    featuredSub: "2026 • Campaign",
+    featuredImages: [
+      "assets/works/chagee-geelato/geelato-thumbnail.webp",
+      "assets/works/chagee-geelato/geelato-cover.webp",
+      "assets/works/chagee-geelato/geelato-1.webp",
+    ]
+  },
   {
     id: "bestea",
     title: "Bes-Tea Brew Crew",
